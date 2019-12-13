@@ -1,13 +1,14 @@
-import React, {Fragment} from 'react';
-import { hot } from 'react-hot-loader';
-import {Route} from "react-router-dom"
-import {ConnectedRouter} from "connected-react-router";
-import {Provider} from "react-redux";
+import React, { Fragment } from "react";
+import { hot } from "react-hot-loader";
+import { Route } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
+import { Provider } from "react-redux";
+
+// 스타일링 모듈
+import "./App.scss";
 
 // 컨테이너 모듈
-import Counter from "./components/Counter/Counter"
-import Todo from "./components/Todo/Todo"
-
+import MainContainer from "./containers/MainContainer/MainContainer";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {store, history} = this.props;
+    const { store, history } = this.props;
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
@@ -30,9 +31,8 @@ class App extends React.Component {
 
 const RoutesComponent = () => (
   <Fragment>
-    <Route exact path="/" component={Counter} />
-    <Route exact path="/todo" component={Todo} />
+    <Route exact path="/" component={MainContainer} />
   </Fragment>
-)
+);
 
 export default hot(module)(App);
