@@ -1,0 +1,34 @@
+@import 'src/assets/styles/main';
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  // overflow: hidden;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+  // font-family: 'Open Sans', sans-serif;
+}
+
+.button {
+  margin-top: 15px;
+  background-color: #a29bfe;
+  outline: none;
+  border-radius: 6px;
+  font-size: 0.7em;
+  padding: 7px 10px;
+  color: white;
+
+
+  &:hover {
+    border: 1px solid #6c5ce7;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
