@@ -2,15 +2,21 @@
     display: flex;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 
     &__forms {
-        flex : 1;
-        height: 100%;
+        flex: 1;
         background-color: blue;
+        min-width: 600px;
     }
 
     &__image-box {
         flex: 2;
         background-color: yellow;
+        min-width: 1300px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
