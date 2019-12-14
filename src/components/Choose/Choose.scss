@@ -1,0 +1,114 @@
+.c-choose {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+
+    &__header {
+        display: flex;
+        height: 30%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .c-choose__header--title {
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 1.25;
+            margin-bottom: 2%;
+            width: 520px;
+        }
+
+        .c-choose__header--desc {
+            font-size: 18px;
+            color: #222222;
+            font-weight: 300;
+            width: 520px;
+            line-height: 1.33;
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 35%;
+
+        .c-choose__content--title {
+            font-size: 24px;
+            font-weight: bold;
+            width: 520px;
+        }
+
+        .c-choose__content--wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+
+            &__stu-btn {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 230px;
+                background-color: #0f4c81;
+                margin-right: 45px;
+                border-radius: 10px;
+                height: 60px;
+                box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+
+                svg {
+                    width: 25px;
+                }
+
+                .desc {
+                    margin-left: 20px;
+                    font-size: 22px;
+                    color: #fff;
+                    font-weight: 550;
+                    font-stretch: normal;
+                }
+
+                &:hover {
+                    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 1);
+                    transition: all 500ms;
+                }
+            }
+
+            &__adm-btn {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 230px;
+                background-color: #fafafa;
+                height: 60px;
+                border-radius: 10px;
+                box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+
+                .desc {
+                    margin-left: 20px;
+                    font-size: 22px;
+                    color: #222222;
+                    font-weight: 550;
+                    font-stretch: normal;
+                }
+
+                &:hover {
+                    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 1);
+                    transition: all 500ms;
+                }
+            }
+        }
+    }
+
+     &__footer {
+        display: flex;
+        height: 25%;
+        align-items: center;
+        svg {
+            margin-left: auto;
+            margin-right: 33px;
+        }
+     }
+}
