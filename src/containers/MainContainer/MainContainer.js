@@ -5,7 +5,12 @@ export default class MainContainer extends Component {
     render() {
         return (
             <div className="main-container">
-                Main
+                <div className="main-container__forms">
+
+                </div>
+                <div className="main-container__image-box">
+
+                </div>
             </div>
         )
     }
