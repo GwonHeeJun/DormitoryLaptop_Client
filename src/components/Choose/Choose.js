@@ -23,7 +23,6 @@ class Choose extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="c-choose">
         <div className="c-choose__header">
