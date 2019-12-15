@@ -1,11 +1,29 @@
 import React, { Component } from "react";
 import { ReactComponent as NoteBook } from "assets/image/notebookPer.svg";
-import { ReactComponent as Student } from 'assets/image/student.svg';
-import { ReactComponent as Admin } from 'assets/image/admin.svg';
+import { ReactComponent as Student } from "assets/image/student.svg";
+import { ReactComponent as Admin } from "assets/image/admin.svg";
+import { connect } from "react-redux";
+import { changeUserType } from "store/Menu/Menu.store";
 import "./Choose.scss";
 
-export default class Choose extends Component {
+class Choose extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+
+    this.onClickChangeUserAuthType = this.onClickChangeUserAuthType.bind();
+  }
+
+  onClickChangeUserAuthType = (e, userType) => {
+    const { changeUserType } = this.props;
+    e.stopPropagation();
+
+    changeUserType(userType);
+  };
+
   render() {
+    console.log(this.props);
     return (
       <div className="c-choose">
         <div className="c-choose__header">
@@ -24,14 +42,14 @@ export default class Choose extends Component {
         </div>
         <div className="c-choose__content">
           <span className="c-choose__content--title">시작해 볼까요?</span>
-          <div className="c-choose__content--wrapper">
+          <div className="c-choose__content--wrapper" onClick={(e) => this.onClickChangeUserAuthType(e, "student")}>
             <div className="c-choose__content--wrapper__stu-btn">
-                <Student />
-                <span className="desc">학생으로 접속</span>
+              <Student />
+              <span className="desc">학생으로 접속</span>
             </div>
-            <div className="c-choose__content--wrapper__adm-btn">
-                <Admin />
-                <span className="desc">관리자로 접속</span>
+            <div className="c-choose__content--wrapper__adm-btn" onClick={(e) => this.onClickChangeUserAuthType(e, "admin")}>
+              <Admin />
+              <span className="desc">관리자로 접속</span>
             </div>
           </div>
         </div>
@@ -42,3 +60,11 @@ export default class Choose extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeUserType: userType => dispatch(changeUserType(userType))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Choose);
