@@ -1,15 +1,15 @@
 import { connectRouter } from "connected-react-router";
 import {combineReducers} from "redux";
 
-import counter from "./Counter/Counter.store";
+import menu from "./Menu/Menu.store";
 
 const reducers = {
-  counter
+  menu
 }
 
 export default (history) => 
   combineReducers({
     router: connectRouter(history),
     ...reducers,
-    counter
+    menu
 })
