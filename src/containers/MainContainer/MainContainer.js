@@ -4,6 +4,7 @@ import "./MainContainer.scss";
 import Header from "components/Header/Header";
 import Choose from "components/Choose/Choose";
 import { connect } from "react-redux";
+import StudentLogin from "components/Student/Login/StudentLogin";
 
 class MainContainer extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class MainContainer extends Component {
       case "student":
           return (
               <React.Fragment>
-                  Student
+                  <Header />
+                  <StudentLogin />
               </React.Fragment>
           )
       case "admin":
