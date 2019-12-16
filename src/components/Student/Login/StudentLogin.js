@@ -1,9 +1,27 @@
 import React, { Component } from "react";
 import { ReactComponent as NoteBook } from "assets/image/notebookPer.svg";
-import ReturnMenu from 'assets/image/naviBack.png';
+import ReturnMenu from "assets/image/naviBack.png";
+import { connect } from "react-redux";
+
+import { changeUserType } from "store/Menu/Menu.store";
 import "./StudentLogin.scss";
 
-export default class StudentLogin extends Component {
+class StudentLogin extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {};
+    
+        this.onClickChangeUserAuthType = this.onClickChangeUserAuthType.bind();
+      }
+    
+      onClickChangeUserAuthType = (e, userType) => {
+        const { changeUserType } = this.props;
+        e.stopPropagation();
+    
+        changeUserType(userType);
+      };
+
   render() {
     return (
       <div className="c-stu-login">
@@ -35,7 +53,12 @@ export default class StudentLogin extends Component {
             </span>
           </p>
           <div className="c-stu-login__desc--navi">
-            <img className="c-stu-login__desc--navi__back" src={ReturnMenu} />
+            <img
+              className="c-stu-login__desc--navi__back"
+              src={ReturnMenu}
+              alt="ReturnMenu"
+              onClick={(e) => this.onClickChangeUserAuthType(e, "")}
+            />
           </div>
         </div>
         <div className="c-stu-login__footer">
@@ -45,3 +68,11 @@ export default class StudentLogin extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeUserType: userType => dispatch(changeUserType(userType))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(StudentLogin);
