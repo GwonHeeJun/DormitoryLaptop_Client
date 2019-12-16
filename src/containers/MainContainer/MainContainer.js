@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import BackImage from "assets/image/backImage.png";
 import "./MainContainer.scss";
 import Header from "components/Header/Header";
-import Choose from "components/Choose/Choose";
+import Choose from "components/Choose/MainChoose/Choose";
 import { connect } from "react-redux";
 import StudentLogin from "components/Student/Login/StudentLogin";
 
@@ -30,7 +30,7 @@ class MainContainer extends Component {
                   <StudentLogin />
               </React.Fragment>
           )
-      case "admin":
+      case "management":
           return (
               <React.Fragment>
                   Admin
