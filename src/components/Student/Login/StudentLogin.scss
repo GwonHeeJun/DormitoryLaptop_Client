@@ -1,0 +1,108 @@
+.c-stu-login {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+    margin-left: 60px;
+
+    .c-stu-login__form--title {
+      font-size: 44px;
+      font-weight: bold;
+      margin-bottom: 50px;
+    }
+
+    .c-stu-login__form--inputs {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        width: 80%;
+        height: 30px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f4;
+        border: none;
+        font-size: 20px;
+        padding: 22px;
+        outline: none;
+      }
+
+      .result {
+        display: flex;
+        flex-direction: row;
+
+        &__save {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .result__save--email {
+                width: 22px;
+                margin-bottom: 0px;
+            }
+        }
+
+        &__login {
+            display: flex;
+            width: 110px;
+            height: 40px;
+            background-color: #0f4c81;
+            color: #fff;
+            margin-left: auto;
+            margin-right: 13%;
+            border-radius: 20px;
+            font-size: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+      }
+    }
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    margin-left: 60px;
+
+    .c-stu-login__desc--explain {
+      font-size: 18px;
+      color: #222222;
+      margin-bottom: 10px;
+
+      &__href {
+        margin-left: 20px;
+        color: #217ece;
+        cursor: pointer;
+      }
+    }
+
+    .c-stu-login__desc--navi {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        height: 44px;
+
+        &__back {
+            width: 44px;
+        }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    height: 25%;
+    align-items: center;
+    svg {
+      margin-left: auto;
+      margin-right: 33px;
+    }
+  }
+}
