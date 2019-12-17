@@ -31,10 +31,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="c-stu-login">
-        <div className="c-stu-login__form">
-          <h2 className="c-stu-login__form--title">{this.props.title} 로그인</h2>
-          <form className="c-stu-login__form--inputs">
+      <div className="c-login">
+        <div className="c-login__form">
+          <h2 className="c-login__form--title">{this.props.title} 로그인</h2>
+          <form className="c-login__form--inputs">
             <input placeholder="이메일" />
             <input placeholder="비밀번호" />
             <div className="result">
@@ -46,29 +46,29 @@ class Login extends Component {
             </div>
           </form>
         </div>
-        <div className="c-stu-login__desc">
-          <p className="c-stu-login__desc--explain">
+        <div className="c-login__desc">
+          <p className="c-login__desc--explain">
             이메일 혹은 비밀번호를 잊으셨나요?
-            <span className="c-stu-login__desc--explain__href">
+            <span className="c-login__desc--explain__href">
               이메일/비밀번호 찾기
             </span>
           </p>
-          <p className="c-stu-login__desc--explain">
+          <p className="c-login__desc--explain">
             아직 계정이 없나요?
-            <span className="c-stu-login__desc--explain__href">
+            <span className="c-login__desc--explain__href">
               계정 생성하기
             </span>
           </p>
-          <div className="c-stu-login__desc--navi">
+          <div className="c-login__desc--navi">
             <img
-              className="c-stu-login__desc--navi__back"
+              className="c-login__desc--navi__back"
               src={ReturnMenu}
               alt="ReturnMenu"
               onClick={(e) => this.onClickChangeUserAuthType(e, "")}
             />
           </div>
         </div>
-        <div className="c-stu-login__footer">
+        <div className="c-login__footer">
           {this.props.title === "학생" ? <NoteBook /> : this.props.title === "자치위원" ? <ConsultantImage /> : <ResidentImage />}
         </div>
       </div>

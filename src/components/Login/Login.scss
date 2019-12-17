@@ -1,4 +1,4 @@
-.c-stu-login {
+.c-login {
   display: flex;
   background-color: #fff;
   width: 100%;
@@ -12,13 +12,13 @@
     height: 35%;
     margin-left: 60px;
 
-    .c-stu-login__form--title {
+    .c-login__form--title {
       font-size: 44px;
       font-weight: bold;
       margin-bottom: 50px;
     }
 
-    .c-stu-login__form--inputs {
+    .c-login__form--inputs {
       display: flex;
       flex-direction: column;
 
@@ -72,7 +72,7 @@
     height: 20%;
     margin-left: 60px;
 
-    .c-stu-login__desc--explain {
+    .c-login__desc--explain {
       font-size: 18px;
       color: #222222;
       margin-bottom: 10px;
@@ -84,7 +84,7 @@
       }
     }
 
-    .c-stu-login__desc--navi {
+    .c-login__desc--navi {
         margin-top: 20px;
         display: flex;
         align-items: center;
