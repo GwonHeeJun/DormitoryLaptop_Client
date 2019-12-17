@@ -9,6 +9,8 @@ const initialState = {
  * userType : 접속한 유저의 로그인 타입을 알기위한 State
  *          : admin   - 관리자
  *          : student - 학생
+ *          : resident - 사감
+ *          : consultant - 자치위원
  * 
  */
 
