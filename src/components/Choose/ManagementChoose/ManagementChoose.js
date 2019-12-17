@@ -4,7 +4,6 @@ import { ReactComponent as Consultant } from "assets/image/admin.svg";
 import { ReactComponent as Resident } from "assets/image/king.svg";
 import { connect } from "react-redux";
 import { changeUserType } from "store/Menu/Menu.store";
-import ReturnMenu from "assets/image/naviBack.png";
 import "./ManagementChoose.scss";
 
 class ManagementChoose extends Component {
