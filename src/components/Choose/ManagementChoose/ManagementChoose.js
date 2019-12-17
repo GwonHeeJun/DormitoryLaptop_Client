@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ReactComponent as Managementor } from "assets/image/management.svg";
-import { ReactComponent as Student } from "assets/image/student.svg";
+import { ReactComponent as Consultant } from "assets/image/admin.svg";
 import { ReactComponent as Resident } from "assets/image/king.svg";
 import { connect } from "react-redux";
 import { changeUserType } from "store/Menu/Menu.store";
@@ -46,16 +46,16 @@ class ManagementChoose extends Component {
             className="c-choose__content--wrapper"
             onClick={e => this.onClickChangeUserAuthType(e, "consultant")}
           >
-            <div className="c-choose__content--wrapper__stu-btn">
-              <Student />
-              <span className="desc">기자위으로 접속</span>
+            <div className="c-choose__content--wrapper__consultant-btn">
+              <Consultant />
+              <span className="desc">자치위원으로 시작</span>
             </div>
             <div
-              className="c-choose__content--wrapper__adm-btn"
+              className="c-choose__content--wrapper__resident-btn"
               onClick={e => this.onClickChangeUserAuthType(e, "resident")}
             >
               <Resident />
-              <span className="desc">사감으로 접속</span>
+              <span className="desc">사감으로 시작</span>
             </div>
           </div>
           <div className="c-choose__content--bottom">

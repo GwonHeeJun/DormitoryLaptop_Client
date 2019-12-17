@@ -44,13 +44,13 @@
             flex-direction: row;
             margin-top: 30px;
 
-            &__stu-btn {
+            &__consultant-btn {
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 230px;
-                background-color: #0f4c81;
+                width: 250px;
+                background-color: #e8e8ec;
                 margin-right: 45px;
                 border-radius: 10px;
                 height: 60px;
@@ -63,7 +63,7 @@
                 .desc {
                     margin-left: 20px;
                     font-size: 22px;
-                    color: #fff;
+                    color: black;
                     font-weight: 550;
                     font-stretch: normal;
                 }
@@ -74,7 +74,7 @@
                 }
             }
 
-            &__adm-btn {
+            &__resident-btn {
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
