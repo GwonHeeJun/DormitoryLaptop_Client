@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import BackImage from "assets/image/backImage.png";
 import "./MainContainer.scss";
-import Header from "components/Header/Header";
 import Choose from "components/Choose/MainChoose/Choose";
 import { connect } from "react-redux";
 import StudentLogin from "components/Student/Login/StudentLogin";
+import ManagementChoose from "components/Choose/ManagementChoose/ManagementChoose";
+import MainTemplete from "containers/MainTemplete/MainTemplete";
 
 class MainContainer extends Component {
   constructor(props) {
@@ -18,24 +19,34 @@ class MainContainer extends Component {
     switch (userType) {
       case "":
         return (
-          <React.Fragment>
-            <Header />
+          <MainTemplete>
             <Choose />
-          </React.Fragment>
+          </MainTemplete>
         );
       case "student":
-          return (
-              <React.Fragment>
-                  <Header />
-                  <StudentLogin />
-              </React.Fragment>
-          )
+        return (
+          <MainTemplete>
+            <StudentLogin />
+          </MainTemplete>
+        );
       case "management":
-          return (
-              <React.Fragment>
-                  Admin
-              </React.Fragment>
-          )
+        return (
+          <MainTemplete>
+            <ManagementChoose />
+          </MainTemplete>
+        );
+      case "resident":
+        return (
+          <MainTemplete>
+            <ManagementChoose />
+          </MainTemplete>
+        );
+      case "consultant":
+        return (
+          <MainTemplete>
+            <ManagementChoose />
+          </MainTemplete>
+        );
       default:
         break;
     }
@@ -44,9 +55,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div className="main-container">
-        <div className="main-container__forms">
-            {this.makeMainForms()}
-        </div>
+        <div className="main-container__forms">{this.makeMainForms()}</div>
         <div className="main-container__image-box">
           <img src={BackImage} alt="BackGroundImage" />
         </div>
