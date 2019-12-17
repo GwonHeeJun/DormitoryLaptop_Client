@@ -46,7 +46,7 @@ class Choose extends Component {
               <Student />
               <span className="desc">학생으로 접속</span>
             </div>
-            <div className="c-choose__content--wrapper__adm-btn" onClick={(e) => this.onClickChangeUserAuthType(e, "management")}>
+            <div className="c-choose__content--wrapper__management-btn" onClick={(e) => this.onClickChangeUserAuthType(e, "management")}>
               <Admin />
               <span className="desc">관리자로 접속</span>
             </div>
