@@ -3,7 +3,7 @@ import BackImage from "assets/image/backImage.png";
 import "./MainContainer.scss";
 import Choose from "components/Choose/MainChoose/Choose";
 import { connect } from "react-redux";
-import StudentLogin from "components/Student/Login/StudentLogin";
+import Login from "components/Login/Login";
 import ManagementChoose from "components/Choose/ManagementChoose/ManagementChoose";
 import MainTemplete from "containers/MainTemplete/MainTemplete";
 
@@ -26,7 +26,7 @@ class MainContainer extends Component {
       case "student":
         return (
           <MainTemplete>
-            <StudentLogin />
+            <Login title="학생"/>
           </MainTemplete>
         );
       case "management":
@@ -35,16 +35,16 @@ class MainContainer extends Component {
             <ManagementChoose />
           </MainTemplete>
         );
-      case "resident":
-        return (
-          <MainTemplete>
-            <ManagementChoose />
-          </MainTemplete>
-        );
       case "consultant":
         return (
           <MainTemplete>
-            <ManagementChoose />
+            <Login title="자치위원"/>
+          </MainTemplete>
+        );
+      case "resident":
+        return (
+          <MainTemplete>
+            <Login title="사감"/>
           </MainTemplete>
         );
       default:
