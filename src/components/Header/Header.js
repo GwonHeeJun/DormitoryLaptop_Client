@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { changeUserType } from "store/Menu/Menu.store";
+import { changeUserType, changeAuthType } from "store/Menu/Menu.store";
 import "./Header.scss";
 
 class Header extends Component {
@@ -13,12 +13,17 @@ class Header extends Component {
   }
 
   onClickChangeUserAuthType = (e, userType) => {
-    const { changeUserType, title } = this.props;
+    const { changeUserType, changeAuthType, authType } = this.props;
     e.stopPropagation();
 
-    if (title === "자치위원" || title === "사감") {
+    if (
+      this.props.userType === "consultant" ||
+      this.props.userType === "resident"
+    ) {
       changeUserType("management");
       return 0;
+    } else if (authType === "register") {
+      changeAuthType("login");
     }
 
     changeUserType(userType);
@@ -28,25 +33,31 @@ class Header extends Component {
     const { userType } = this.props;
     return (
       <div className="c-header">
-        {userType !== "" ? <span
-          className="c-header__logo"
-          onClick={e => this.onClickChangeUserAuthType(e, "")}
-        >
-          돌아가기
-        </span> : <span className="c-header__logo">로고</span>}
+        {userType !== "" ? (
+          <span
+            className="c-header__logo"
+            onClick={e => this.onClickChangeUserAuthType(e, "")}
+          >
+            돌아가기
+          </span>
+        ) : (
+          <span className="c-header__logo">로고</span>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-    return {
-      userType: state.menu.userType
-    };
+  return {
+    userType: state.menu.userType,
+    authType: state.menu.authType
   };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
+    changeAuthType: authType => dispatch(changeAuthType(authType)),
     changeUserType: userType => dispatch(changeUserType(userType))
   };
 };

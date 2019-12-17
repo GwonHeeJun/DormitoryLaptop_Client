@@ -3,7 +3,7 @@ import { ReactComponent as NoteBook } from "assets/image/notebookPer.svg";
 import { ReactComponent as Student } from "assets/image/student.svg";
 import { ReactComponent as Admin } from "assets/image/admin.svg";
 import { connect } from "react-redux";
-import { changeUserType } from "store/Menu/Menu.store";
+import { changeUserType, changeAuthType } from "store/Menu/Menu.store";
 import "./Choose.scss";
 
 class Choose extends Component {
@@ -12,14 +12,22 @@ class Choose extends Component {
 
     this.state = {};
 
-    this.onClickChangeUserAuthType = this.onClickChangeUserAuthType.bind();
+    this.onClickChangeUserType = this.onClickChangeUserType.bind();
+    this.onClickChangeAuthType = this.onClickChangeAuthType.bind();
   }
 
-  onClickChangeUserAuthType = (e, userType) => {
+  onClickChangeUserType = (e, userType) => {
     const { changeUserType } = this.props;
     e.stopPropagation();
 
     changeUserType(userType);
+  };
+  
+  onClickChangeAuthType = (e, authType) => {
+    const { changeAuthType } = this.props;
+    e.stopPropagation();
+
+    changeAuthType(authType);
   };
 
   render() {
@@ -41,12 +49,15 @@ class Choose extends Component {
         </div>
         <div className="c-choose__content">
           <span className="c-choose__content--title">시작해 볼까요?</span>
-          <div className="c-choose__content--wrapper" onClick={(e) => this.onClickChangeUserAuthType(e, "student")}>
+          <div className="c-choose__content--wrapper" onClick={(e) => {
+            this.onClickChangeUserType(e, "student");
+            this.onClickChangeAuthType(e, "login");
+          }}>
             <div className="c-choose__content--wrapper__stu-btn">
               <Student />
               <span className="desc">학생으로 접속</span>
             </div>
-            <div className="c-choose__content--wrapper__management-btn" onClick={(e) => this.onClickChangeUserAuthType(e, "management")}>
+            <div className="c-choose__content--wrapper__management-btn" onClick={(e) => this.onClickChangeUserType(e, "management")}>
               <Admin />
               <span className="desc">관리자로 접속</span>
             </div>
@@ -62,7 +73,8 @@ class Choose extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeUserType: userType => dispatch(changeUserType(userType))
+    changeUserType: userType => dispatch(changeUserType(userType)),
+    changeAuthType: authType => dispatch(changeAuthType(authType))
   };
 };
 
