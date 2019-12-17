@@ -33,14 +33,16 @@ class Login extends Component {
     return (
       <div className="c-login">
         <div className="c-login__form">
-          <h2 className="c-login__form--title">{this.props.title} 로그인
+          <h2 className="c-login__form--title">
           <img
               className="c-login__form--title__back"
               src={ReturnMenu}
               alt="ReturnMenu"
               onClick={(e) => this.onClickChangeUserAuthType(e, "")}
             />
-            </h2>
+            {this.props.title} 로그인
+          
+          </h2>
           
           <form className="c-login__form--inputs">
             <input placeholder="이메일" />
