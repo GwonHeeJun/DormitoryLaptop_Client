@@ -34,9 +34,19 @@
         height: 20%;
 
         .c-choose__content--title {
-            font-size: 24px;
+            font-size: 25px;
             font-weight: bold;
             width: 520px;
+            display: flex;
+            align-items: center;
+            height: 50px;
+
+            img {
+                margin-right: 10px;
+                height: 40px;
+                width: 40px;
+                cursor: pointer;
+            }
         }
 
         .c-choose__content--wrapper {
@@ -100,17 +110,13 @@
             }
         }
 
-        .c-choose__content--bottom {
-            display: flex;
-            margin-right: auto;
-            margin-left: 50px;
-            margin-top: 20px;
+        // .c-choose__content--bottom {
+        //     
 
-            img {
-                width: 44px;
-                cursor: pointer;
-            }
-        }
+        //     img {
+        //         
+        //     }
+        // }
     }
 
      &__footer {
