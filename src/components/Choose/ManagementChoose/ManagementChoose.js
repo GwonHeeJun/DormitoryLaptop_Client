@@ -41,11 +41,7 @@ class ManagementChoose extends Component {
           </div>
         </div>
         <div className="c-choose__content">
-          <span className="c-choose__content--title">
-          <img src={ReturnMenu}  onClick={e => this.onClickChangeUserAuthType(e, "")} alt="ReturnMenu"/>당신은 누구신가요?
-          
-          
-          </span>
+          <span className="c-choose__content--title">당신은 누구신가요?</span>
           <div
             className="c-choose__content--wrapper"
             onClick={e => this.onClickChangeUserAuthType(e, "consultant")}

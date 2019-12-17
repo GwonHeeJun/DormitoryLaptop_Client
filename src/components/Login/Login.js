@@ -2,48 +2,21 @@ import React, { Component } from "react";
 import { ReactComponent as NoteBook } from "assets/image/notebookPer.svg";
 import { ReactComponent as ConsultantImage } from "assets/image/management.svg";
 import { ReactComponent as ResidentImage } from "assets/image/resident.svg";
-import ReturnMenu from "assets/image/naviBack.png";
-import { connect } from "react-redux";
-
-import { changeUserType } from "store/Menu/Menu.store";
 import "./Login.scss";
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {};
-    
-        this.onClickChangeUserAuthType = this.onClickChangeUserAuthType.bind();
-      }
-    
-      onClickChangeUserAuthType = (e, userType) => {
-        const { changeUserType, title } = this.props;
-        e.stopPropagation();
-    
-        if (title === "자치위원" || title === "사감") {
-          changeUserType("management");
-          return 0;
-        }
+export default class Login extends Component {
+  constructor(props) {
+    super(props);
 
-        changeUserType(userType);
-      };
+    this.state = {};
+  }
 
   render() {
     return (
       <div className="c-login">
         <div className="c-login__form">
-          <h2 className="c-login__form--title">
-          <img
-              className="c-login__form--title__back"
-              src={ReturnMenu}
-              alt="ReturnMenu"
-              onClick={(e) => this.onClickChangeUserAuthType(e, "")}
-            />
-            {this.props.title} 로그인
-          
-          </h2>
-          
+          <h2 className="c-login__form--title">{this.props.title} 로그인</h2>
+
           <form className="c-login__form--inputs">
             <input placeholder="이메일" />
             <input placeholder="비밀번호" />
@@ -65,23 +38,19 @@ class Login extends Component {
           </p>
           <p className="c-login__desc--explain">
             아직 계정이 없나요?
-            <span className="c-login__desc--explain__href">
-              계정 생성하기
-            </span>
+            <span className="c-login__desc--explain__href">계정 생성하기</span>
           </p>
         </div>
         <div className="c-login__footer">
-          {this.props.title === "학생" ? <NoteBook /> : this.props.title === "자치위원" ? <ConsultantImage /> : <ResidentImage />}
+          {this.props.title === "학생" ? (
+            <NoteBook />
+          ) : this.props.title === "자치위원" ? (
+            <ConsultantImage />
+          ) : (
+            <ResidentImage />
+          )}
         </div>
       </div>
     );
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeUserType: userType => dispatch(changeUserType(userType))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Login);
