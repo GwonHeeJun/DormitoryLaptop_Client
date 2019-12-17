@@ -33,7 +33,15 @@ class Login extends Component {
     return (
       <div className="c-login">
         <div className="c-login__form">
-          <h2 className="c-login__form--title">{this.props.title} 로그인</h2>
+          <h2 className="c-login__form--title">{this.props.title} 로그인
+          <img
+              className="c-login__form--title__back"
+              src={ReturnMenu}
+              alt="ReturnMenu"
+              onClick={(e) => this.onClickChangeUserAuthType(e, "")}
+            />
+            </h2>
+          
           <form className="c-login__form--inputs">
             <input placeholder="이메일" />
             <input placeholder="비밀번호" />
@@ -59,14 +67,6 @@ class Login extends Component {
               계정 생성하기
             </span>
           </p>
-          <div className="c-login__desc--navi">
-            <img
-              className="c-login__desc--navi__back"
-              src={ReturnMenu}
-              alt="ReturnMenu"
-              onClick={(e) => this.onClickChangeUserAuthType(e, "")}
-            />
-          </div>
         </div>
         <div className="c-login__footer">
           {this.props.title === "학생" ? <NoteBook /> : this.props.title === "자치위원" ? <ConsultantImage /> : <ResidentImage />}

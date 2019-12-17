@@ -16,6 +16,14 @@
       font-size: 44px;
       font-weight: bold;
       margin-bottom: 50px;
+      display: flex;
+      align-items: center;
+
+      &__back {
+        width: 50px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
     }
 
     .c-login__form--inputs {
@@ -39,34 +47,34 @@
         flex-direction: row;
 
         &__save {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .result__save--email {
-                width: 22px;
-                margin-bottom: 0px;
-            }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .result__save--email {
+            width: 22px;
+            margin-bottom: 0px;
+          }
         }
 
         &__login {
-            display: flex;
-            width: 110px;
-            height: 40px;
-            background-color: #0f4c81;
-            color: #fff;
-            margin-left: auto;
-            margin-right: 13%;
-            border-radius: 20px;
-            font-size: 20px;
-            justify-content: center;
-            align-items: center;
+          display: flex;
+          width: 110px;
+          height: 40px;
+          background-color: #0f4c81;
+          color: #fff;
+          margin-left: auto;
+          margin-right: 13%;
+          border-radius: 20px;
+          font-size: 20px;
+          justify-content: center;
+          align-items: center;
         }
-
       }
     }
   }
 
   &__desc {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     height: 20%;
@@ -85,15 +93,14 @@
     }
 
     .c-login__desc--navi {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        height: 44px;
+      display: flex;
+      align-items: center;
+      height: 44px;
 
-        &__back {
-            width: 44px;
-            cursor: pointer;
-        }
+      &__back {
+        width: 44px;
+        cursor: pointer;
+      }
     }
   }
 
