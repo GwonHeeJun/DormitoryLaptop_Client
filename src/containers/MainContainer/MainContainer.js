@@ -6,27 +6,25 @@ import { connect } from "react-redux";
 import Login from "components/Login/Login";
 import ManagementChoose from "components/Choose/ManagementChoose/ManagementChoose";
 import MainTemplete from "containers/MainTemplete/MainTemplete";
+import Register from "components/Register/Register";
 
 class MainContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {};
+
   }
 
+
+
   makeMainForms() {
-    const { userType } = this.props;
+    const { userType, authType } = this.props;
     switch (userType) {
       case "":
         return (
           <MainTemplete>
             <Choose />
-          </MainTemplete>
-        );
-      case "student":
-        return (
-          <MainTemplete>
-            <Login title="학생"/>
           </MainTemplete>
         );
       case "management":
@@ -35,16 +33,22 @@ class MainContainer extends Component {
             <ManagementChoose />
           </MainTemplete>
         );
-      case "consultant":
+      default:
+        break;
+    }
+    switch (authType) {
+      case "login":
         return (
           <MainTemplete>
-            <Login title="자치위원"/>
+            <Login
+              title={userType}
+            />
           </MainTemplete>
         );
-      case "resident":
+      case "register":
         return (
           <MainTemplete>
-            <Login title="사감"/>
+            <Register />
           </MainTemplete>
         );
       default:
@@ -65,7 +69,8 @@ class MainContainer extends Component {
 }
 const mapStateToProps = state => {
   return {
-    userType: state.menu.userType
+    userType: state.menu.userType,
+    authType: state.menu.authType
   };
 };
 
