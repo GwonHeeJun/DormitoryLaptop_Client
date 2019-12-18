@@ -3,7 +3,7 @@ import { ReactComponent as Managementor } from "assets/image/management.svg";
 import { ReactComponent as Consultant } from "assets/image/admin.svg";
 import { ReactComponent as Resident } from "assets/image/king.svg";
 import { connect } from "react-redux";
-import { changeUserType } from "store/Menu/Menu.store";
+import { changeUserType, changeAuthType } from "store/Menu/Menu.store";
 import "./ManagementChoose.scss";
 
 class ManagementChoose extends Component {
@@ -16,9 +16,10 @@ class ManagementChoose extends Component {
   }
 
   onClickChangeUserAuthType = (e, userType) => {
-    const { changeUserType } = this.props;
+    const { changeUserType, changeAuthType } = this.props;
     e.stopPropagation();
 
+    changeAuthType("login");
     changeUserType(userType);
   };
 
@@ -68,7 +69,8 @@ class ManagementChoose extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeUserType: userType => dispatch(changeUserType(userType))
+    changeUserType: userType => dispatch(changeUserType(userType)),
+    changeAuthType: authType => dispatch(changeAuthType(authType))
   };
 };
 
