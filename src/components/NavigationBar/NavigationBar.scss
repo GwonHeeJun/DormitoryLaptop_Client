@@ -1,0 +1,356 @@
+.c-navigation-bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__top {
+        margin-top: 50px;
+        width: 100%;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        margin-left: 45px;
+
+        span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+    }
+
+    &__mid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 10;
+        margin-left: 45px;
+
+        p {
+            cursor: pointer;
+        }
+
+       .home {
+            display: flex;
+            align-items: center;
+            svg {
+                margin-right: 20px;
+            }
+
+            .home {
+                fill : #bbbbbe;
+            }
+
+            font-size: 20px;
+            color: #bbbbbe;
+            margin-top: 40px;
+            font-weight: bold;
+
+            &:hover {
+                .home {
+                    fill :#0f4c81;
+                }
+                color :#0f4c81;
+            }
+
+            &__active {
+                display: flex;
+                align-items: center;
+                color: #0f4c81;
+
+                svg {
+                    margin-right: 20px;
+                }
+
+                font-size: 20px;
+                margin-top: 40px;
+                font-weight: bold;
+
+                .home {
+                    fill: #0f4c81;
+                }
+            }
+       }
+
+       .notice {
+            display: flex;
+            align-items: center;
+            
+            svg {
+                margin-right: 20px;
+
+            }
+
+            font-size: 20px;
+            color: #bbbbbe;
+            margin-top: 40px;
+            font-weight: bold;
+
+            &:hover {
+
+                .notice {
+                    fill :#0f4c81;
+                }
+
+                color :#0f4c81;
+            }
+
+            &__active {
+                display: flex;
+                align-items: center;
+                color: #0f4c81;
+
+                svg {
+                    margin-right: 20px;
+                }
+
+                font-size: 20px;
+                margin-top: 40px;
+                font-weight: bold;
+
+                .notice {
+                    fill: #0f4c81;
+                }
+            }
+       }
+
+       .notebook {
+        display: flex;
+        align-items: center;
+        
+        svg {
+            margin-right: 20px;
+
+        }
+
+        font-size: 20px;
+        color: #bbbbbe;
+        margin-top: 40px;
+        font-weight: bold;
+
+        &:hover {
+            .notebook {
+                fill :#0f4c81;
+            }
+            color :#0f4c81;
+        }
+
+        &__active {
+            display: flex;
+            align-items: center;
+            color: #0f4c81;
+
+            svg {
+                margin-right: 20px;
+            }
+
+            font-size: 20px;
+            margin-top: 40px;
+            font-weight: bold;
+
+            .notebook {
+                fill: #0f4c81;
+            }
+        }
+       }
+
+       .song {
+        display: flex;
+        align-items: center;
+        
+        svg {
+            margin-right: 20px;
+
+        }
+
+        font-size: 20px;
+        color: #bbbbbe;
+        margin-top: 40px;
+        font-weight: bold;
+
+        &:hover {
+            .Song {
+                fill :#0f4c81;
+            }
+            color :#0f4c81;
+        }
+
+        &__active {
+            display: flex;
+            align-items: center;
+            color: #0f4c81;
+
+            svg {
+                margin-right: 20px;
+            }
+
+            font-size: 20px;
+            margin-top: 40px;
+            font-weight: bold;
+
+            .Song {
+                fill: #0f4c81;
+            }
+        }
+       }
+
+       .graph {
+        display: flex;
+        align-items: center;
+        
+        svg {
+            margin-right: 20px;
+
+        }
+
+        font-size: 20px;
+        color: #bbbbbe;
+        margin-top: 40px;
+        font-weight: bold;
+
+        &:hover {
+            .graph {
+                fill :#0f4c81;
+            }
+            color :#0f4c81;
+        }
+
+        &__active {
+            display: flex;
+            align-items: center;
+            color: #0f4c81;
+
+            svg {
+                margin-right: 20px;
+            }
+
+            font-size: 20px;
+            margin-top: 40px;
+            font-weight: bold;
+
+            .graph {
+                fill: #0f4c81;
+            }
+        }
+       }
+
+       .setting {
+        display: flex;
+        align-items: center;
+        
+        svg {
+            margin-right: 20px;
+
+        }
+
+        font-size: 20px;
+        color: #bbbbbe;
+        margin-top: 40px;
+        font-weight: bold;
+
+        &:hover {
+            .setting {
+                fill :#0f4c81;
+            }
+            color :#0f4c81;
+        }
+
+        &__active {
+            display: flex;
+            align-items: center;
+            color: #0f4c81;
+
+            svg {
+                margin-right: 20px;
+            }
+
+            font-size: 20px;
+            margin-top: 40px;
+            font-weight: bold;
+
+            .setting {
+                fill: #0f4c81;
+            }
+        }
+       }
+       
+       
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 5;
+        margin-left: 45px;
+
+        .school {
+            display: flex;
+            align-items: center;
+            
+            svg {
+                margin-right: 20px;
+    
+            }
+    
+            font-size: 20px;
+            color: #bbbbbe;
+            margin-top: 40px;
+            font-weight: bold;
+    
+            &:hover {
+                .school {
+                    fill :#0f4c81;
+                }
+                color :#0f4c81;
+            }
+           }
+
+           .slack {
+            display: flex;
+            align-items: center;
+            
+            svg {
+                margin-right: 20px;
+    
+            }
+    
+            font-size: 20px;
+            color: #bbbbbe;
+            margin-top: 40px;
+            font-weight: bold;
+    
+            &:hover {
+                .slack {
+                    fill :#0f4c81;
+                }
+                color :#0f4c81;
+            }
+           }
+           
+           .bug {
+            display: flex;
+            align-items: center;
+            
+            svg {
+                margin-right: 20px;
+    
+            }
+    
+            font-size: 20px;
+            color: #bbbbbe;
+            margin-top: 40px;
+            font-weight: bold;
+    
+            &:hover {
+                .bug {
+                    fill :#0f4c81;
+                }
+                color :#0f4c81;
+            }
+           }
+
+           p{
+               cursor: pointer;
+           }
+    }
+}
