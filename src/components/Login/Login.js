@@ -85,9 +85,9 @@ class Login extends Component {
           </p>
         </div>
         <div className="c-login__footer">
-          {this.props.title === "학생" ? (
+          {this.state.userTypeKor === "학생" ? (
             <NoteBook />
-          ) : this.props.title === "자치위원" ? (
+          ) : this.state.userTypeKor === "자치위원" ? (
             <ConsultantImage />
           ) : (
             <ResidentImage />
