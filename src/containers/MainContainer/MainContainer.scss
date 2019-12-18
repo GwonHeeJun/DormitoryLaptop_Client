@@ -6,13 +6,11 @@
 
     &__forms {
         flex: 1;
-        background-color: blue;
         min-width: 600px;
     }
 
     &__image-box {
         flex: 2;
-        background-color: yellow;
         min-width: 1300px;
         img {
             width: 100%;
