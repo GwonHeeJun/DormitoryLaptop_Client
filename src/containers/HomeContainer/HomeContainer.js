@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./HomeContainer.scss";
 import NavigationBar from 'components/NavigationBar/NavigationBar';
+import ProfileBar from 'components/ProfileBar/ProfileBar';
 
 export default class HomeContainer extends Component {
     render() {
@@ -13,7 +14,7 @@ export default class HomeContainer extends Component {
 
                 </div>
                 <div className="home-container__profile">
-
+                    <ProfileBar />
                 </div>
             </div>
         )
