@@ -9,7 +9,8 @@
   &__form {
     display: flex;
     flex-direction: column;
-    height: 35%;
+    justify-content: center;
+    height: 50%;
     margin-left: 60px;
 
     .c-login__form--title {
@@ -77,7 +78,7 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    height: 20%;
+    height: 8%;
     margin-left: 60px;
 
     .c-login__desc--explain {
@@ -106,7 +107,7 @@
 
   &__footer {
     display: flex;
-    height: 20%;
+    height: 30%;
     align-items: center;
     svg {
       margin-left: auto;
