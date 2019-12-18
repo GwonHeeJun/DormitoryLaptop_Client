@@ -48,7 +48,7 @@ class MainContainer extends Component {
       case "register":
         return (
           <MainTemplete>
-            <Register />
+            <Register title={userType}/>
           </MainTemplete>
         );
       default:
