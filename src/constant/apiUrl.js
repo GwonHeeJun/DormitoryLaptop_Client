@@ -1,7 +1,7 @@
 export const url = {
   dasom:
     process.env.NODE_ENV === "development"
-      ? 'http://35.189.189.53:8080'
+      ? 'http://10.120.74.181:4000/'
       : 'https://helper.dasomi.ai'
 }
 
