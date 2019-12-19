@@ -3,6 +3,7 @@ import "./HomeContainer.scss";
 import NavigationBar from 'components/NavigationBar/NavigationBar';
 import ProfileBar from 'components/ProfileBar/ProfileBar';
 import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
+import Notice from 'components/Notice/Notice';
 
 export default class HomeContainer extends Component {
     render() {
@@ -18,10 +19,10 @@ export default class HomeContainer extends Component {
                     </div>
                     <div className="home-container__content--notice">
                         <div className="consultant">
-
+                            <Notice title="자치 위원회"/>
                         </div>
                         <div className="resident">
-
+                            <Notice title="사감 선생님"/>
                         </div>
                     </div>
                     <div className="home-container__content--song">
