@@ -6,7 +6,7 @@ class Api {
     "content-type": "application/json"
   };
 
-  async ajax(method, apiUrl, url, data, options) {
+  static async ajax(method, apiUrl, url, data, options) {
     const _options = options
     ? { ...this.defaultHeaderOptions, ...options }
     : this.defaultHeaderOptions;
