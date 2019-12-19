@@ -1,8 +1,8 @@
 export const url = {
   dasom:
     process.env.NODE_ENV === "development"
-      ? 'http://10.120.74.181:4000/'
-      : 'https://helper.dasomi.ai'
+      ? 'http://dormitory-management.us-east-2.elasticbeanstalk.com/'
+      : 'http://10.120.74.181:4000/'
 }
 
 console.log(
