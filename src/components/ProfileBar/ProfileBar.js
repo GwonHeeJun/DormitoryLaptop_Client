@@ -56,11 +56,11 @@ export default class ProfileBar extends Component {
               }}
             >
               <div className="left">
-                <span className="left__top">12/16 노트북 대여</span>
-                <span className="left__bottom">LAB 4실, 15번 좌석</span>
+                <span className="left__top">12/17 기상음악 신청</span>
+                <span className="left__bottom">IU(아이유) - Blueming</span>
               </div>
               <div className="right">
-                <span className="right__time">22:00 - 23:50</span>
+                <span className="right__time">7:15 - 7:19</span>
               </div>
             </div>
           </div>
