@@ -4,6 +4,7 @@ import NavigationBar from 'components/NavigationBar/NavigationBar';
 import ProfileBar from 'components/ProfileBar/ProfileBar';
 import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
 import Notice from 'components/Notice/Notice';
+import MorningSong from 'components/MorningSong/MorningSong';
 
 export default class HomeContainer extends Component {
     render() {
@@ -26,7 +27,7 @@ export default class HomeContainer extends Component {
                         </div>
                     </div>
                     <div className="home-container__content--song">
-
+                        <MorningSong />
                     </div>
                 </div>
                 <div className="home-container__profile">
