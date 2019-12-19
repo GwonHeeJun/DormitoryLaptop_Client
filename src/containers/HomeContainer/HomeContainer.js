@@ -11,7 +11,21 @@ export default class HomeContainer extends Component {
                     <NavigationBar />
                 </div>
                 <div className="home-container__content">
+                    <h2 className="home-container__content--title">홈 <small>2019년 12월 16일 월요일</small></h2>
+                    <div className="home-container__content--service">
 
+                    </div>
+                    <div className="home-container__content--notice">
+                        <div className="consultant">
+
+                        </div>
+                        <div className="resident">
+
+                        </div>
+                    </div>
+                    <div className="home-container__content--song">
+
+                    </div>
                 </div>
                 <div className="home-container__profile">
                     <ProfileBar />
