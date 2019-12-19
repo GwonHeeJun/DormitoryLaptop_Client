@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "./HomeContainer.scss";
 import NavigationBar from 'components/NavigationBar/NavigationBar';
 import ProfileBar from 'components/ProfileBar/ProfileBar';
+import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
 
 export default class HomeContainer extends Component {
     render() {
@@ -13,7 +14,7 @@ export default class HomeContainer extends Component {
                 <div className="home-container__content">
                     <h2 className="home-container__content--title">홈 <small>2019년 12월 16일 월요일</small></h2>
                     <div className="home-container__content--service">
-
+                        <ServiceBanner />
                     </div>
                     <div className="home-container__content--notice">
                         <div className="consultant">
