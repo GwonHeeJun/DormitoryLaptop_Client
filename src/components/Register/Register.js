@@ -2,17 +2,60 @@ import React, { Component } from "react";
 import { ReactComponent as NoteBook } from "assets/image/notebookPer.svg";
 import { ReactComponent as ConsultantImage } from "assets/image/management.svg";
 import { ReactComponent as ResidentImage } from "assets/image/resident.svg";
+import { localRegister } from "lib/auth";
 import "./Register.scss";
 
 export default class Register extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
-      userTypeKor: ""
-    }
+      userTypeKor: "",
+      email: "",
+      password: "",
+      rePassword: "",
+      verification_code: "",
+      checkBox: true
+    };
   }
-  
+
+  onChange = e => {
+    const { name, value } = e.target;
+    console.log(value)
+    this.setState({
+      [name]: value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { email, password, verification_code, rePassword, checkBox } = this.state;
+    const { title } = this.props;
+    if (email === "") {
+      alert("이메일을 입력해 주세요.");
+      return;
+    } else if (password === "") {
+      alert("비밀번호를 입력해 주세요.");
+      return;
+    } else if (password !== rePassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      this.setState({
+        rePassword: ""
+      });
+      return;
+    } else if (checkBox) {
+      alert("이용약관과 개인정보취급방침에 동의해주세요");
+      return;
+    }
+
+    localRegister({ type: title, email, password, verification_code })
+      .then(result => {
+        console.log("pass")
+      })
+      .catch(result => {
+        console.log(result);
+      });
+  };
 
   componentDidMount() {
     const { title } = this.props;
@@ -41,26 +84,46 @@ export default class Register extends Component {
     return (
       <div className="c-register">
         <div className="c-register__content">
-          <h2 className="c-register__content--title">{this.state.userTypeKor} 계정 생성</h2>
-          <form className="c-register__content--form">
+          <h2 className="c-register__content--title">
+            {this.state.userTypeKor} 계정 생성
+          </h2>
+          <form className="c-register__content--form" onSubmit={this.onSubmit}>
             <input
               className="c-register__content--form__input"
               placeholder="이메일"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
             />
             <input
               className="c-register__content--form__input"
               placeholder="비밀번호"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChange}
             />
             <input
               className="c-register__content--form__input"
               placeholder="비밀번호 확인"
+              name="rePassword"
+              value={this.state.rePassword}
+              onChange={this.onChange}
             />
             <input
               className="c-register__content--form__input"
               placeholder={this.state.userTypeKor + " 확인 코드"}
+              name="verification_code"
+              value={this.state.verification_code}
+              onChange={this.onChange}
             />
             <div className="c-register__content--form__desc">
-              <input className="agree-check" type="checkbox" />
+              <input
+                className="agree-check"
+                type="checkbox"
+                name="checkBox"
+                value={this.state.checkBox}
+                onChange={() => this.setState({ checkBox : !this.state.checkBox})}
+              />
               <p>
                 <span>이용약관, 개인정보취급방침</span>에 동의합니다.
               </p>
@@ -71,7 +134,7 @@ export default class Register extends Component {
           </form>
         </div>
         <div className="c-register__footer">
-        {this.state.userTypeKor === "학생" ? (
+          {this.state.userTypeKor === "학생" ? (
             <NoteBook />
           ) : this.state.userTypeKor === "자치위원" ? (
             <ConsultantImage />
