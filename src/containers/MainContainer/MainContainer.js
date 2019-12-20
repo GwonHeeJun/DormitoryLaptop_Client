@@ -7,6 +7,7 @@ import Login from "components/Login/Login";
 import ManagementChoose from "components/Choose/ManagementChoose/ManagementChoose";
 import MainTemplete from "containers/MainTemplete/MainTemplete";
 import Register from "components/Register/Register";
+import { CheckUser } from "lib/auth";
 
 class MainContainer extends Component {
   constructor(props) {
@@ -53,6 +54,12 @@ class MainContainer extends Component {
         );
       default:
         break;
+    }
+  }
+  
+  componentDidMount() {
+    if (localStorage.getItem("gsm-token")) {
+      CheckUser(localStorage.getItem("gsm-token")).then(res => console.log(res)).catch(err => console.log(err))
     }
   }
 
