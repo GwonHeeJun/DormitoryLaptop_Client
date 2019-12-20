@@ -16,7 +16,7 @@ export default class MorningSong extends Component {
                 <div className="c-morning-song__music-list">
                     {dummyData.map((item, idx) => {
                         return (
-                            <div className="c-morning-song__music-list--single">
+                            <div className="c-morning-song__music-list--single" key={idx}>
 
                             </div>
                         )
