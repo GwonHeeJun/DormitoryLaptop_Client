@@ -3,6 +3,7 @@ import BackImage from "assets/image/backImage.png";
 import "./MainContainer.scss";
 import Choose from "components/Choose/MainChoose/Choose";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Login from "components/Login/Login";
 import ManagementChoose from "components/Choose/ManagementChoose/ManagementChoose";
 import MainTemplete from "containers/MainTemplete/MainTemplete";
@@ -13,11 +14,10 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
-
+    this.state = {
+      isRedirect: false
+    };
   }
-
-
 
   makeMainForms() {
     const { userType, authType } = this.props;
@@ -41,29 +41,37 @@ class MainContainer extends Component {
       case "login":
         return (
           <MainTemplete>
-            <Login
-              title={userType}
-            />
+            <Login title={userType} />
           </MainTemplete>
         );
       case "register":
         return (
           <MainTemplete>
-            <Register title={userType}/>
+            <Register title={userType} />
           </MainTemplete>
         );
       default:
         break;
     }
   }
-  
+
   componentDidMount() {
     if (localStorage.getItem("gsm-token")) {
-      CheckUser(localStorage.getItem("gsm-token")).then(res => console.log(res)).catch(err => console.log(err))
+      CheckUser(localStorage.getItem("gsm-token"))
+        .then(res => {
+          localStorage.setItem("gsm-token", res.data.token);
+          this.setState({
+            isRedirect: true
+          });
+        })
+        .catch(err => console.log(err));
     }
   }
 
   render() {
+    if (this.state.isRedirect) {
+      return <Redirect to="/home" />;
+    }
     return (
       <div className="main-container">
         <div className="main-container__forms">{this.makeMainForms()}</div>
