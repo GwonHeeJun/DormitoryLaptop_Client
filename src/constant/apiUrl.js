@@ -2,7 +2,7 @@ export const url = {
   gsm:
     process.env.NODE_ENV === "development"
       ? 'http://dormitory-management.us-east-2.elasticbeanstalk.com/'
-      : 'http://10.120.74.181:4000/'
+      : 'http://dormitory-management.us-east-2.elasticbeanstalk.com/'
     }
 
 console.log(
