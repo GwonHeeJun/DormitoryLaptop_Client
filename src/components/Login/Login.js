@@ -4,6 +4,8 @@ import { ReactComponent as ConsultantImage } from "assets/image/management.svg";
 import { ReactComponent as ResidentImage } from "assets/image/resident.svg";
 import { connect } from "react-redux";
 import { changeAuthType } from "store/Menu/Menu.store";
+import { Redirect } from 'react-router-dom';
+import { localLogin } from "lib/auth";
 import "./Login.scss";
 
 class Login extends Component {
@@ -11,11 +13,45 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      userTypeKor: ""
+      userTypeKor: "",
+      email: "",
+      password: "",
+      isRedirect: false
     };
 
     this.onClickChangeAuthType = this.onClickChangeAuthType.bind();
   }
+
+  onChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const { title } = this.props;
+    if (email === "") {
+      alert("이메일을 입력해 주세요.");
+      return;
+    } else if (password === "") {
+      alert("비밀번호를 입력해 주세요.")
+      return;
+    }
+
+    localLogin({ type : title, email, password })
+    .then(result => {
+      localStorage.setItem("gsm-token", result.data.token);
+      this.setState({
+        isRedirect : true
+      })
+    })
+    .catch(result => {
+      alert("이메일과 비밀번호가 등록된 정보와 일치하지 않습니다.");
+    });
+  };
 
   componentDidMount() {
     const { title } = this.props;
@@ -48,6 +84,10 @@ class Login extends Component {
   };
 
   render() {
+
+    if (this.state.isRedirect) {
+      return <Redirect to="/home"/>
+    }
     return (
       <div className="c-login">
         <div className="c-login__form">
@@ -55,9 +95,9 @@ class Login extends Component {
             {this.state.userTypeKor} 로그인
           </h2>
 
-          <form className="c-login__form--inputs">
-            <input placeholder="이메일" />
-            <input placeholder="비밀번호" />
+          <form className="c-login__form--inputs" onSubmit={this.onSubmit}>
+            <input placeholder="이메일" name="email" value={this.state.email} onChange={this.onChange}/>
+            <input placeholder="비밀번호" name="password" type="password" value={this.state.password} onChange={this.onChange}/>
             <div className="result">
               <p className="result__save">
                 <input className="result__save--email" type="checkbox" />
