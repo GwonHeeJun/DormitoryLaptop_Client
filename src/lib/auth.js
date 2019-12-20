@@ -15,6 +15,8 @@ export const localLogin = ({ type, email, password }) =>
   });
 
 export const CheckUser = ({ token }) => 
-  Api.ajax("get" , url.gsm, 'user/refresh', { headers: {
-      token : token
-  } });
+  Api.ajax("get" , url.gsm, 'user/refresh', {
+    headers: {
+      token : localStorage.getItem('gsm-token')
+    }
+  });
