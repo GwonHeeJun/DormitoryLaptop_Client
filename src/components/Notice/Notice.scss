@@ -38,7 +38,7 @@
         height: 80%;
         margin-left: 30px;
         margin-right: 30px;
-
+        margin-bottom: 20px;
         .c-cs-notice__list--single-new {
             margin-top: 20px;
             width: 100%;
@@ -48,6 +48,7 @@
             background-color: #ffffff;
             display: flex;
             align-items: center;
+            transition: all 500ms;
 
             .cricle {
                 margin-left: 20px;
@@ -88,6 +89,10 @@
                     color: #bbbbbe;
                 }
             }
+
+            &:hover {
+                box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.38);
+            }
          }
 
          .c-cs-notice__list--single-old {
@@ -99,6 +104,7 @@
             background-color: #e8e8ec;
             display: flex;
             align-items: center;
+            transition: all 500ms;
 
             .cricle {
                 margin-left: 20px;
@@ -132,6 +138,10 @@
                     font-size: 14px;
                     color: #bbbbbe;
                 }
+            }
+
+            &:hover {
+                box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.38);
             }
          }
     }

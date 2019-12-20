@@ -143,6 +143,8 @@
                 box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.16);
                 background-image: linear-gradient(63deg, #217ece 21%, #9242dd 76%);
                 color: #fff;
+                transition: all 500ms;
+                
                 .left {
                     display: flex;
                     flex-direction: column;
@@ -166,6 +168,10 @@
                     &__time {
                         font-size: 12px;
                     }
+                }
+
+                &:hover {
+                    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.38);
                 }
             }
 
@@ -177,11 +183,12 @@
                 width: 100%;
                 height: 80px;
                 border-radius: 20px;
-                // filter: blur(3px);
                 background-position: center center;
                 background-size: 350px;
                 object-fit: contain;
                 color: white;
+                transition: all 500ms;
+                box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.16);
 
                 .left {
                     display: flex;
@@ -206,6 +213,10 @@
                     &__time {
                         font-size: 12px;
                     }
+                }
+
+                &:hover {
+                    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.38);
                 }
             }
         }

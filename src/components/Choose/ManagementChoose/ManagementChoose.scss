@@ -65,7 +65,8 @@
                 border-radius: 10px;
                 height: 60px;
                 box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-
+                transition: all 500ms;
+                
                 svg {
                     width: 25px;
                 }
@@ -80,7 +81,6 @@
 
                 &:hover {
                     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
-                    transition: all 500ms;
                 }
             }
 
@@ -94,7 +94,8 @@
                 height: 60px;
                 border-radius: 10px;
                 box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-
+                transition: all 500ms;
+                
                 .desc {
                     margin-left: 20px;
                     font-size: 22px;
@@ -105,7 +106,6 @@
 
                 &:hover {
                     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
-                    transition: all 500ms;
                 }
             }
         }
