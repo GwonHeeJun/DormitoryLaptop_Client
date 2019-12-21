@@ -4,7 +4,7 @@ import { ReactComponent as ConsultantImage } from "assets/image/management.svg";
 import { ReactComponent as ResidentImage } from "assets/image/resident.svg";
 import { connect } from "react-redux";
 import { changeAuthType } from "store/Menu/Menu.store";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { localLogin } from "lib/auth";
 import "./Login.scss";
 
@@ -16,7 +16,8 @@ class Login extends Component {
       userTypeKor: "",
       email: "",
       password: "",
-      isRedirect: false
+      isRedirect: false,
+      checkBox: true
     };
 
     this.onClickChangeAuthType = this.onClickChangeAuthType.bind();
@@ -31,26 +32,30 @@ class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { email, password, checkBox } = this.state;
     const { title } = this.props;
     if (email === "") {
       alert("이메일을 입력해 주세요.");
       return;
     } else if (password === "") {
-      alert("비밀번호를 입력해 주세요.")
+      alert("비밀번호를 입력해 주세요.");
       return;
     }
 
-    localLogin({ type : title, email, password })
-    .then(result => {
-      localStorage.setItem("gsm-token", result.data.token);
-      this.setState({
-        isRedirect : true
+    localLogin({ type: title, email, password })
+      .then(result => {
+        localStorage.setItem("gsm-token", result.data.token);
+        this.setState({
+          isRedirect: true
+        });
+
+        if (!checkBox) {
+          localStorage.setItem("email", email);
+        }
       })
-    })
-    .catch(result => {
-      alert("이메일과 비밀번호가 등록된 정보와 일치하지 않습니다.");
-    });
+      .catch(result => {
+        alert("이메일과 비밀번호가 등록된 정보와 일치하지 않습니다.");
+      });
   };
 
   componentDidMount() {
@@ -74,6 +79,13 @@ class Login extends Component {
       default:
         break;
     }
+
+    if(localStorage.getItem("email")) {
+      this.setState({
+        email: localStorage.getItem("email"),
+        checkBox: true
+      })
+    }
   }
 
   onClickChangeAuthType = (e, authType) => {
@@ -84,9 +96,8 @@ class Login extends Component {
   };
 
   render() {
-
     if (this.state.isRedirect) {
-      return <Redirect to="/home"/>
+      return <Redirect to="/home" />;
     }
     return (
       <div className="c-login">
@@ -96,11 +107,30 @@ class Login extends Component {
           </h2>
 
           <form className="c-login__form--inputs" onSubmit={this.onSubmit}>
-            <input placeholder="이메일" name="email" value={this.state.email} onChange={this.onChange}/>
-            <input placeholder="비밀번호" name="password" type="password" value={this.state.password} onChange={this.onChange}/>
+            <input
+              placeholder="이메일"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
+            />
+            <input
+              placeholder="비밀번호"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onChange}
+            />
             <div className="result">
               <p className="result__save">
-                <input className="result__save--email" type="checkbox" />
+                <input
+                  className="result__save--email"
+                  type="checkbox"
+                  name="checkBox"
+                  value={this.state.checkBox}
+                  onChange={() =>
+                    this.setState({ checkBox: !this.state.checkBox })
+                  }
+                />
                 <span>이메일 저장</span>
               </p>
               <button className="result__login">로그인</button>
