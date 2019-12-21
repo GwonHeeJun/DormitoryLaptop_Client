@@ -29,20 +29,32 @@
         margin-top: 20px;
         height: 90%;
         display: flex;
+        // flex: 1 1 auto;
         align-items: center;
+        margin-right: 30px;
+        // width: 100vw;
 
         .c-morning-song__music-list--single {
+            flex: 0 0 100px;
             width: 100px;
             height: 100px;
             border-radius: 15px;
             box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.16);
             background-color: #ffffff;
-            margin-left: 55px;
+            margin-left: 27.5px;
+            margin-right: 27.5px;
             transition: all 500ms;
 
             &:hover {
                 box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.38);
             }
+
+        }
+        &::after {
+            content: "";
+            height: 100px;
+            width: 12px;
+            flex: 0 0 12px;
         }
     }
 }
