@@ -22,46 +22,6 @@
         padding-left: 50px;
         padding-right: 50px;
 
-        .home-container__content--title {
-            font-size: 50px;
-            font-weight: bold;
-            margin-right: auto;
-            small {
-                margin-left: 15px;
-                font-size: 18px;
-                font-weight: normal;
-            }
-        }
-
-        .home-container__content--service {
-            display: flex;
-            width: 100%;
-            height: 15%;
-            margin-top: 50px;
-        }
-
-        .home-container__content--notice {
-            display: flex;
-            width: 100%;
-            height: 38%;
-            margin-top: 40px;
-
-            .consultant {
-                flex: 1;
-                margin-right: 19px;
-            }
-
-            .resident {
-                flex: 1;
-                margin-left: 19px;
-            }
-        }
-
-        .home-container__content--song {
-            width: 100%;
-            height: 20%;
-            margin-top: 40px;
-        }
     }
 
     &__profile {
