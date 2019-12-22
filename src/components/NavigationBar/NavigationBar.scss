@@ -113,7 +113,7 @@
             }
        }
 
-       .notebook {
+       .laptop {
         display: flex;
         align-items: center;
         
@@ -128,9 +128,11 @@
         font-weight: bold;
 
         &:hover {
+
             .notebook {
                 fill :#0f4c81;
             }
+
             color :#0f4c81;
         }
 
@@ -346,6 +348,24 @@
                     fill :#0f4c81;
                 }
                 color :#0f4c81;
+            }
+
+            &__active {
+                display: flex;
+                align-items: center;
+                color: #0f4c81;
+    
+                svg {
+                    margin-right: 20px;
+                }
+    
+                font-size: 20px;
+                margin-top: 40px;
+                font-weight: bold;
+    
+                .bug {
+                    fill: #0f4c81;
+                }
             }
            }
 
