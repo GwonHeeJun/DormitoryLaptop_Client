@@ -85,14 +85,18 @@ class NavigationBar extends Component {
           </p>
         </div>
         <div className="c-navigation-bar__bottom">
-          <p className="school">
-            <School />
-            학교 홈페이지
-          </p>
+          <a target="_blank" rel="noopener noreferrer"  href="http://www.gsm.hs.kr">
+            <p className="school">
+              <School />
+              학교 홈페이지
+            </p>
+          </a>
+          <a target="_blank" rel="noopener noreferrer"  href="http://gsmhs.slack.com">
           <p className="slack">
             <Slack width="25" />
             학교 슬랙
           </p>
+          </a>
           <p className={
               navigationType === "report" ? "bug__active" : "bug"
             }
