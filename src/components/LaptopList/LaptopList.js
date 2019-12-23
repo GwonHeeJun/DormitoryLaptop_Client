@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import "./LaptopList.scss";
 import SmallRoom from "components/SmallRoom/SmallRoom";
+import { connect } from 'react-redux'
+import { changeLaptopRoom } from 'store/Laptop/Laptop.store';
 
 const dummyData = [
-  { type: 1, room_name: "Lab 1", reser: 13, max: 24 },
-  { type: 0, room_name: "Lab 2", reser: 3, max: 24 },
-  { type: 0, room_name: "Lab 3", reser: 9, max: 24 },
-  { type: 2, room_name: "Lab 4", reser: 18, max: 24 }
+  { type: 1, room_name: "lab1", reser: 13, max: 24 },
+  { type: 0, room_name: "lab2", reser: 3, max: 24 },
+  { type: 0, room_name: "lab3", reser: 9, max: 24 },
+  { type: 2, room_name: "lab4", reser: 18, max: 24 }
 ];
 
-export default class LaptopList extends Component {
+class LaptopList extends Component {
   constructor(props) {
     super(props);
 
@@ -17,10 +19,11 @@ export default class LaptopList extends Component {
       type: [],
       message: []
     };
+
+    this.onClickChangeLaptopName = this.onClickChangeLaptopName.bind();
   }
 
   componentDidMount() {
-
     this.forceUpdate();
     dummyData.map(item => {
       switch (item.type) {
@@ -43,6 +46,13 @@ export default class LaptopList extends Component {
     });
   }
 
+  onClickChangeLaptopName = (e, roomName) => {
+    const { changeLaptopRoom } = this.props;
+    e.stopPropagation();
+
+    changeLaptopRoom(roomName);
+  };
+
   render() {
     return (
       <div className="c-laptop-list">
@@ -50,7 +60,7 @@ export default class LaptopList extends Component {
         <div className="c-laptop-list__scroll">
           {dummyData.map((item, idx) => {
             return (
-              <div className="room">
+              <div className="room" onClick={e => this.onClickChangeLaptopName(e, item.room_name)}>
                 <div className="room__left">
                   <div className="room__left--status">
                     <span
@@ -88,3 +98,11 @@ export default class LaptopList extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeLaptopRoom: roomName => dispatch(changeLaptopRoom(roomName))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(LaptopList);
