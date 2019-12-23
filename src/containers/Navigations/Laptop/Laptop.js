@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "./Laptop.scss";
 import ServiceBanner from 'components/ServiceBanner/ServiceBanner';
 import LaptopList from 'components/LaptopList/LaptopList';
-import LaptopSeat from 'components/LaptopSeat/LaptopSeat';
+import LaptopDesc from 'components/LaptopDesc/LaptopDesc';
 
 export default class Laptop extends Component {
     render() {
@@ -20,7 +20,7 @@ export default class Laptop extends Component {
                         <LaptopList />
                     </div>
                     <div className="laptop-content__body--seat">
-                        <LaptopSeat />
+                        <LaptopDesc />
                     </div>
                 </div>
               </div>
