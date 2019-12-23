@@ -60,7 +60,6 @@ export default class Lap extends Component {
                   }}
                 >
                   {list.map((item, idx) => {
-                    console.log(item);
                     if (idx <= 1) {
                       return (
                         <div
