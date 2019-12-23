@@ -20,6 +20,8 @@ export default class LaptopList extends Component {
   }
 
   componentDidMount() {
+
+    this.forceUpdate();
     dummyData.map(item => {
       switch (item.type) {
         case 0:
