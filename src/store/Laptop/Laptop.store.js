@@ -19,14 +19,14 @@ export default function reducer(state = initialState, action = {}) {
       case CHANGE_LAPTOP_ROOM:
         return {
           ...state,
-          userType: action.payload.userType
+          roomName: action.payload.roomName
         }
       default:
         return state
     }
   }
 
-export const changeUserType = roomName => ({
+export const changeLaptopRoom = roomName => ({
     type: CHANGE_LAPTOP_ROOM,
     payload : {
         roomName

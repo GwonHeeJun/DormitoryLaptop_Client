@@ -5,7 +5,8 @@ import menu from "./Menu/Menu.store";
 import laptop from "./Laptop/Laptop.store"
 
 const reducers = {
-  menu
+  menu,
+  laptop
 }
 
 export default (history) => 
