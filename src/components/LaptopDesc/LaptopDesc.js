@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import "./LaptopSeat.scss";
+import "./LaptopDesc.scss";
 
-export default class LaptopSeat extends Component {
+export default class LaptopDesc extends Component {
     render() {
         return (
             <div className="c-laptop-seat">
