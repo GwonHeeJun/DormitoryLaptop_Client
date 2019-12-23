@@ -39,6 +39,7 @@ export default class LaptopList extends Component {
         default:
           break;
       }
+      return 0;
     });
   }
 
