@@ -2,8 +2,46 @@ import React, { Component } from "react";
 import { ReactComponent as Notebook } from "assets/image/notebookSele.svg";
 import Lap from "./RoomType/Lap/Lap";
 import "./LaptopDesc.scss";
+import { connect } from "react-redux";
 
-export default class LaptopDesc extends Component {
+class LaptopDesc extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      roomName: ""
+    };
+  }
+
+  componentDidMount() {
+    const { roomName } = this.props;
+    this.forceUpdate();
+    switch (roomName) {
+      case "lab1":
+        this.setState({
+          roomName: "Lab 1"
+        });
+        break;
+      case "lab2":
+        this.setState({
+          roomName: "Lab 2"
+        });
+        break;
+      case "lab3":
+        this.setState({
+          roomName: "Lab 3"
+        });
+        break;
+      case "lab4":
+        this.setState({
+          roomName: "Lab 4"
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     return (
       <div className="c-laptop-desc">
@@ -11,11 +49,18 @@ export default class LaptopDesc extends Component {
           <div className="c-laptop-desc__left--header">
             <h2 className="c-laptop-desc__left--header__title">좌석 선택</h2>
             <span className="c-laptop-desc__left--header__desc">
-              RoomName실
+              {this.props.roomName === "lab1"
+                ? "Lab 1"
+                : this.props.roomName === "lab2"
+                ? "Lab 2"
+                : this.props.roomName === "lab3"
+                ? "Lab 3"
+                : "Lab 4"}
+              실
             </span>
           </div>
           <div className="c-laptop-desc__left--content">
-              <Lap />
+            <Lap />
           </div>
         </div>
         <div className="c-laptop-desc__right">
@@ -40,3 +85,11 @@ export default class LaptopDesc extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    roomName: state.laptop.roomName
+  };
+};
+
+export default connect(mapStateToProps, null)(LaptopDesc);
