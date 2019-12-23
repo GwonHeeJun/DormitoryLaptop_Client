@@ -13,8 +13,6 @@ export default class RoomDesc extends Component {
     }
     
     render() {
-        console.log(this.props.room)
-        console.log(this.props.type)
         return (
             <div className="c-small-room">
                 <div className="c-small-room__list">
