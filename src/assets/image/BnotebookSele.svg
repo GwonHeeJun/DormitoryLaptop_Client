@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="노트북_아이콘" width="27.033" height="23.05" data-name="노트북 아이콘" viewBox="0 0 27.033 23.05">
+    <defs>
+        <style>
+            .BnotebookSele{fill:#f1f8ff}
+        </style>
+    </defs>
+    <path id="패스_217" d="M12.665 12.252V27.2h22.428V12.252a.623.623 0 0 0-.623-.623H13.288a.623.623 0 0 0-.623.623zm1.246.623h19.936v12.46H13.911z" class="BnotebookSele" data-name="패스 217" transform="translate(-10.363 -11.629)"/>
+    <path id="패스_218" d="M29.73 67.63H7.3l-2.258 5.651a.393.393 0 0 0 .392.579H31.6a.392.392 0 0 0 .392-.579zm-14.152 4.984l.294-1.246h5.29l.294 1.246z" class="BnotebookSele" data-name="패스 218" transform="translate(-5 -50.81)"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12.1" height="10.317" viewBox="0 0 12.1 10.317">
+    <defs>
+        <style>
+            .notebook-sele{fill:#f1f8ff}
+        </style>
+    </defs>
+    <g id="노트북_아이콘" data-name="노트북 아이콘" transform="translate(-5 -11.629)">
+        <path id="패스_217" d="M12.665 11.908V18.6H22.7v-6.692a.279.279 0 0 0-.279-.279h-9.477a.279.279 0 0 0-.279.279zm.558.279h8.923v5.577h-8.923z" class="notebook-sele" data-name="패스 217" transform="translate(-6.634)"/>
+        <path id="패스_218" d="M16.069 67.63H6.031l-1.012 2.53a.176.176 0 0 0 .175.259h11.712a.176.176 0 0 0 .175-.259zm-6.334 2.231l.132-.558h2.368l.132.558z" class="notebook-sele" data-name="패스 218" transform="translate(0 -48.472)"/>
+    </g>
+</svg>
