@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import "./LaptopList.scss";
 import SmallRoom from "components/SmallRoom/SmallRoom";
-import { connect } from 'react-redux'
-import { changeLaptopRoom } from 'store/Laptop/Laptop.store';
-
-const dummyData = [
-  { type: 1, room_name: "lab1", reser: 13, max: 24 },
-  { type: 0, room_name: "lab2", reser: 3, max: 24 },
-  { type: 0, room_name: "lab3", reser: 9, max: 24 },
-  { type: 2, room_name: "lab4", reser: 18, max: 24 }
-];
+import { connect } from "react-redux";
+import { changeLaptopRoom } from "store/Laptop/Laptop.store";
+import { laptopRoomList } from "lib/laptop";
 
 class LaptopList extends Component {
   constructor(props) {
@@ -17,7 +11,9 @@ class LaptopList extends Component {
 
     this.state = {
       type: [],
-      message: []
+      message: [],
+      roomList: [],
+      roomSeatDesc: []
     };
 
     this.onClickChangeLaptopName = this.onClickChangeLaptopName.bind();
@@ -25,31 +21,19 @@ class LaptopList extends Component {
 
   componentDidMount() {
     this.forceUpdate();
-    dummyData.map(item => {
-      switch (item.type) {
-        case 0:
-          this.state.type.push("yellow");
-          this.state.message.push("여유");
-          break;
-        case 1:
-          this.state.type.push("green");
-          this.state.message.push("보통");
-          break;
-        case 2:
-          this.state.type.push("red");
-          this.state.message.push("혼잡");
-          break;
-        default:
-          break;
-      }
-      return 0;
-    });
+    laptopRoomList()
+      .then(res => this.setState({ roomList: res.data.rooms }))
+      .catch(err => console.log(err));
+    this.forceUpdate();
   }
 
   onClickChangeLaptopName = (e, roomName) => {
     const { changeLaptopRoom } = this.props;
     e.stopPropagation();
-
+    if (roomName === "self") {
+      alert("현재 추가되지 않은 실입니다.");
+      return;
+    }
     changeLaptopRoom(roomName);
   };
 
@@ -58,37 +42,35 @@ class LaptopList extends Component {
       <div className="c-laptop-list">
         <h2 className="c-laptop-list__title">학습실 선택</h2>
         <div className="c-laptop-list__scroll">
-          {dummyData.map((item, idx) => {
+          {this.state.roomList.map((item, idx) => {
             return (
-              <div className="room" onClick={e => this.onClickChangeLaptopName(e, item.room_name)}>
+              <div
+                className="room"
+                onClick={e => this.onClickChangeLaptopName(e, item.room)}
+                key={idx}
+              >
                 <div className="room__left">
                   <div className="room__left--status">
-                    <span
-                      className={"room__left--status__" + this.state.type[idx]}
-                    />
+                    <span className={"room__left--status__" + item.type} />
                     <span className="room__left--status__text">
                       <span
-                        className={
-                          "room__left--status__text--" + this.state.type[idx]
-                        }
+                        className={"room__left--status__text--" + item.type}
                       >
-                        {this.state.message[idx]}
+                        {item.message}
                       </span>
                     </span>
                   </div>
-                  <div className="room__left--name">{item.room_name} 실</div>
+                  <div className="room__left--name">{item.name}</div>
                   <div className="room__left--desc">
                     현재인원
-                    <span
-                      className={"room__left--desc__" + this.state.type[idx]}
-                    >
-                      {item.reser}
+                    <span className={"room__left--desc__" + item.type}>
+                      {item.seats}
                     </span>
-                    / {item.max}명
+                    / {item.size}명
                   </div>
                 </div>
                 <div className="room__right">
-                  <SmallRoom type={this.state.type[idx]} room={idx + 1} />
+                  <SmallRoom type={item.type} room={idx + 1} key={idx} />
                 </div>
               </div>
             );
@@ -99,10 +81,16 @@ class LaptopList extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    roomName: state.laptop.roomName
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     changeLaptopRoom: roomName => dispatch(changeLaptopRoom(roomName))
   };
 };
 
-export default connect(null, mapDispatchToProps)(LaptopList);
+export default connect(mapStateToProps, mapDispatchToProps)(LaptopList);
