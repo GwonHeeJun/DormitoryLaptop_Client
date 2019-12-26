@@ -66,12 +66,12 @@ class Login extends Component {
           userTypeKor: "학생"
         });
         break;
-      case "consultant":
+      case "manager":
         this.setState({
           userTypeKor: "자치위원"
         });
         break;
-      case "resident":
+      case "teacher":
         this.setState({
           userTypeKor: "사감"
         });
