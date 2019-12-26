@@ -5,12 +5,18 @@ import ProfileBar from "components/ProfileBar/ProfileBar";
 import { connect } from "react-redux";
 import Home from "containers/Navigations/Home/Home";
 import Laptop from "containers/Navigations/Laptop/Laptop";
+import { myLaptop } from "lib/laptop";
+import { Redirect } from "react-router-dom";
 
 class HomeContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      myRoom: "",
+      mySeat: 0,
+      isRedirect: false
+    };
   }
 
   makeMainComponents() {
@@ -35,7 +41,26 @@ class HomeContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    if (localStorage.getItem('gsm-token')) {
+    } else {
+      alert("로그인 후 이용해주세요");
+      this.setState({ isRedirect: true })
+      
+    }
+    myLaptop()
+      .then(res =>
+        this.setState({ myRoom: res.data.room, mySeat: res.data.seat })
+      )
+      .catch(err => console.log(err));
+  }
+
   render() {
+
+    if (this.state.isRedirect) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="home-container">
         <div className="home-container__navigation">
@@ -45,7 +70,7 @@ class HomeContainer extends Component {
             {this.makeMainComponents()}
         </div>
         <div className="home-container__profile">
-          <ProfileBar />
+          <ProfileBar myRoom={this.state.myRoom} mySeat={this.state.mySeat}/>
         </div>
       </div>
     );
