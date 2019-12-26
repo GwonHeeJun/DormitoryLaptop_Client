@@ -10,7 +10,7 @@
         margin-left: 31px;
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 80%;
         h2 {
             font-size: 32px;
             font-weight: bold;
@@ -21,6 +21,8 @@
             font-size: 20px;
             font-weight: normal;
         }
+
+        
     }
 
     &__icon {
@@ -31,6 +33,60 @@
 
         svg {
             margin-left: auto;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+.c-service-laptop {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  background-image: linear-gradient(82deg, #217ece 8%, #7926c7 95%);
+    display: flex;
+    align-items: center;
+
+    &__desc {
+        margin-left: 31px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 80%;
+
+        h2 {
+            margin-top: 12px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+
+            small {
+                cursor: pointer;
+                color: #cfcfcf;
+                font-size: 18px;
+                font-weight: normal;
+                text-decoration-line: underline;
+            }
+        }
+
+        span {
+            font-size: 18px;
+            font-weight: normal;
+            color: #fff;
+        }
+
+        
+    }
+
+    &__icon {
+        width: 50%;
+        flex: 1;
+        display: flex;
+        margin-left: auto;
+
+        svg {
+            margin-left: auto;
+            width: 205px;
+            margin-right: 20px;
             margin-bottom: 50px;
         }
     }
