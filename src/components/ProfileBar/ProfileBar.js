@@ -4,9 +4,63 @@ import { ReactComponent as Logout } from "assets/image/logout.svg";
 import { ReactComponent as Limit } from "assets/image/limit.svg";
 import { ReactComponent as ManProfile } from "assets/image/manProfile.svg";
 import "./ProfileBar.scss";
+import { UserInfo } from "lib/auth";
 
 export default class ProfileBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+      grade: "",
+      class: "",
+      point: 0
+    };
+  }
+
+  componentDidMount() {
+    UserInfo()
+      .then(res =>
+        this.setState({
+          name: res.data.name,
+          grade: res.data.grade,
+          class: res.data.class,
+          point: res.data.point
+        })
+      )
+      .catch(err => console.log(err));
+  }
+
   render() {
+    var today = new Date();
+    var nowMonth = today.getMonth() + 1,
+      nowDay = today.getDay(),
+      nowDate = today.getDate();
+    switch (nowDay) {
+      case 1:
+        nowDay = "월";
+        break;
+      case 2:
+        nowDay = "화";
+        break;
+      case 3:
+        nowDay = "수";
+        break;
+      case 4:
+        nowDay = "목";
+        break;
+      case 5:
+        nowDay = "금";
+        break;
+      case 6:
+        nowDay = "토";
+        break;
+      case 7:
+        nowDay = "일";
+        break;
+      default:
+        break;
+    }
     return (
       <div className="c-profile-bar">
         <div className="c-profile-bar__header">
@@ -22,33 +76,46 @@ export default class ProfileBar extends Component {
         <div className="c-profile-bar__content">
           <div className="c-profile-bar__content--user">
             <ManProfile />
-            <span className="name">리액트</span>
-            <span className="class">0-0</span>
+            <span className="name">{this.state.name}</span>
+            <span className="class">{this.state.grade}-{this.state.class}</span>
           </div>
           <div className="c-profile-bar__content--grade">
             <Limit />
             <span className="title">상벌점</span>
             <div className="bar">
-              <span className="bar__location" style={{ width: "35.5px" }} />
+              <span className="bar__location" style={{ width: `${7.1 * this.state.point}` }} />
             </div>
-            <span className="grade">-5</span>
+            <span className="grade">{this.state.point}</span>
           </div>
         </div>
         <div className="c-profile-bar__footer">
           <span className="c-profile-bar__footer--title">이벤트</span>
 
           <div className="card-list">
-            <div className="card-list__card-notebook">
-              <div className="left">
-                <span className="left__top">12/16 노트북 대여</span>
-                <span className="left__bottom">LAB 4실, 15번 좌석</span>
+            {this.props.mySeat === 0 ? null : (
+              <div className="card-list__card-notebook">
+                <div className="left">
+                  <span className="left__top">
+                    {nowMonth}/{nowDate} 노트북 대여
+                  </span>
+                  <span className="left__bottom">
+                    {this.props.myRoom === "lab1"
+                      ? "Lab 1"
+                      : this.props.myRoom === "lab2"
+                      ? "Lab 2"
+                      : this.props.myRoom === "lab3"
+                      ? "Lab 3"
+                      : "Lab 4"}
+                    실, {this.props.mySeat}번 좌석
+                  </span>
+                </div>
+                <div className="right">
+                  <span className="right__time">22:00 - 23:50</span>
+                </div>
               </div>
-              <div className="right">
-                <span className="right__time">22:00 - 23:50</span>
-              </div>
-            </div>
+            )}
 
-            <div
+            {/* <div
               className="card-list__card-youtube"
               style={{
                 backgroundImage:
@@ -62,7 +129,7 @@ export default class ProfileBar extends Component {
               <div className="right">
                 <span className="right__time">7:15 - 7:19</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="c-profile-bar__copyright">
