@@ -45,6 +45,7 @@ class Login extends Component {
     localLogin({ type: title, email, password })
       .then(result => {
         localStorage.setItem("gsm-token", result.data.token);
+        localStorage.setItem('authority', title);
         this.setState({
           isRedirect: true
         });

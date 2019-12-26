@@ -59,7 +59,8 @@ class MainContainer extends Component {
     if (localStorage.getItem("gsm-token")) {
       CheckUser(localStorage.getItem("gsm-token"))
         .then(res => {
-          localStorage.setItem("gsm-token", res.data.token);
+        localStorage.setItem('authority', res.data.authority);
+        localStorage.setItem("gsm-token", res.data.token);
           this.setState({
             isRedirect: true
           });

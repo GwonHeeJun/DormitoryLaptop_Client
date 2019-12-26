@@ -23,11 +23,11 @@ class HomeContainer extends Component {
     const { navigationType } = this.props;
     switch (navigationType) {
       case "home":
-        return <Home />
+        return <Home />;
       case "notice":
         break;
       case "laptop":
-        return <Laptop />
+        return <Laptop />;
       case "song":
         break;
       case "point":
@@ -42,11 +42,10 @@ class HomeContainer extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('gsm-token')) {
+    if (localStorage.getItem("gsm-token")) {
     } else {
       alert("로그인 후 이용해주세요");
-      this.setState({ isRedirect: true })
-      
+      this.setState({ isRedirect: true });
     }
     myLaptop()
       .then(res =>
@@ -56,7 +55,6 @@ class HomeContainer extends Component {
   }
 
   render() {
-
     if (this.state.isRedirect) {
       return <Redirect to="/" />;
     }
@@ -67,11 +65,13 @@ class HomeContainer extends Component {
           <NavigationBar />
         </div>
         <div className="home-container__content">
-            {this.makeMainComponents()}
+          {this.makeMainComponents()}
         </div>
-        <div className="home-container__profile">
-          <ProfileBar myRoom={this.state.myRoom} mySeat={this.state.mySeat}/>
-        </div>
+        {localStorage.getItem("authority") === "teacher" ? (
+          null
+        ) : <div className="home-container__profile">
+        <ProfileBar myRoom={this.state.myRoom} mySeat={this.state.mySeat} />
+      </div>}
       </div>
     );
   }
