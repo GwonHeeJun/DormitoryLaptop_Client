@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { ReactComponent as ManProfile } from "assets/image/manProfile.svg";
 import { ReactComponent as UnBlock } from "assets/image/unBlock.svg";
 import "./AdminLaptopList.scss";
 import { ReactComponent as Success } from "assets/image/success.svg";
-import { ReactComponent as Fail } from "assets/image/block.svg";
 import {
   blockConfirm,
   blockCancel,
