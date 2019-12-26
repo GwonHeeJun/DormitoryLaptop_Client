@@ -44,7 +44,7 @@ class ManagementChoose extends Component {
           <span className="c-choose__content--title">당신은 누구신가요?</span>
           <div
             className="c-choose__content--wrapper"
-            onClick={e => this.onClickChangeUserAuthType(e, "consultant")}
+            onClick={e => this.onClickChangeUserAuthType(e, "manager")}
           >
             <div className="c-choose__content--wrapper__consultant-btn">
               <Consultant />
@@ -52,7 +52,7 @@ class ManagementChoose extends Component {
             </div>
             <div
               className="c-choose__content--wrapper__resident-btn"
-              onClick={e => this.onClickChangeUserAuthType(e, "resident")}
+              onClick={e => this.onClickChangeUserAuthType(e, "teacher")}
             >
               <Resident />
               <span className="desc">사감으로 시작</span>
