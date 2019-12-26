@@ -13,35 +13,6 @@ class LaptopDesc extends Component {
     };
   }
 
-  componentDidMount() {
-    const { roomName } = this.props;
-    this.forceUpdate();
-    switch (roomName) {
-      case "lab1":
-        this.setState({
-          roomName: "Lab 1"
-        });
-        break;
-      case "lab2":
-        this.setState({
-          roomName: "Lab 2"
-        });
-        break;
-      case "lab3":
-        this.setState({
-          roomName: "Lab 3"
-        });
-        break;
-      case "lab4":
-        this.setState({
-          roomName: "Lab 4"
-        });
-        break;
-      default:
-        break;
-    }
-  }
-
   render() {
     return (
       <div className="c-laptop-desc">
