@@ -26,6 +26,52 @@
                 line-height: 17px;
             }
 
+            &__red {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #e11a1a;  
+                
+                span {
+                    font-size: 14px;
+                    color: #fff;
+                    line-height: 17px;
+                }
+
+            }
+
+            &__yellow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 30%;
+                background-color: #f8c600;
+                margin-bottom: 10px; 
+                
+                span {
+                    font-size: 14px;
+                    color: #fff;
+                    line-height: 17px;
+                }
+
+            }
+
+            &__green {
+                display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30%;
+            background-color: #28c842;
+            margin-bottom: 10px; 
+                
+                span {
+                    font-size: 14px;
+                    color: #fff;
+                    line-height: 17px;
+                }
+
+            }
+
         }
 
         .lab {
