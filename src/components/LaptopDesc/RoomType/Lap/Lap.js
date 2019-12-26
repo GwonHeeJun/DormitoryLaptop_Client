@@ -1,42 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { ReactComponent as NoteBook } from "assets/image/BnotebookSele.svg";
 import "./Lap.scss";
 import { connect } from "react-redux";
-
-const dummyData = [
-  [
-    { seated: 0 },
-    { seated: 1 },
-    { seated: 0 },
-    { seated: 2 },
-    { seated: 2 },
-    { seated: 1 }
-  ],
-  [
-    { seated: 0 },
-    { seated: 0 },
-    { seated: 1 },
-    { seated: 2 },
-    { seated: 1 },
-    { seated: 0 }
-  ],
-  [
-    { seated: 0 },
-    { seated: 1 },
-    { seated: 0 },
-    { seated: 2 },
-    { seated: 2 },
-    { seated: 1 }
-  ],
-  [
-    { seated: 0 },
-    { seated: 0 },
-    { seated: 1 },
-    { seated: 2 },
-    { seated: 1 },
-    { seated: 0 }
-  ]
-];
+import { roomSeat, laptopBorrow } from "lib/laptop";
+import { ReactComponent as Success } from "assets/image/success.svg";
+import { ReactComponent as Fail } from "assets/image/block.svg";
+var roomSeatDesc = [];
 
 class Lap extends Component {
   constructor(props) {
@@ -45,39 +14,63 @@ class Lap extends Component {
     this.state = {
       isClicked: false,
       seatNum: 0,
-      roomName: ""
+      roomName: "",
+      roomSeatDesc: [],
+      count: 0,
+      title: "",
+      desc: "",
+      borrowType: ""
     };
   }
 
   componentDidMount() {
     const { roomName } = this.props;
-    this.forceUpdate();
-    switch (roomName) {
-      case "lab1":
-        this.setState({
-          roomName: "Lab 1"
-        });
-        break;
-      case "lab2":
-        this.setState({
-          roomName: "Lab 2"
-        });
-        break;
-      case "lab3":
-        this.setState({
-          roomName: "Lab 3"
-        });
-        break;
-      case "lab4":
-        this.setState({
-          roomName: "Lab 4"
-        });
-        break;
-      default:
-        break;
+    roomSeat({ roomName }).then(res =>
+      this.setState({ roomSeatDesc: res.data.seats })
+    );
+    console.log(roomSeatDesc);
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    const { roomName } = this.props;
+    if (prevProps.roomName === roomName) {
+      return;
+    } else {
+      roomSeat({ roomName }).then(res => {
+        this.setState({ roomSeatDesc: res.data.seats });
+      });
     }
   }
 
+  onSubmitBorrowLaptop(seat) {
+    const { roomName } = this.props;
+    laptopBorrow({ room: roomName, seat: seat })
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({
+            title: res.data.title,
+            desc: res.data.msg,
+            borrowType: "success"
+          });
+        } else {
+          this.setState({
+            title: res.data.title,
+            desc: res.data.msg,
+            borrowType: "fail"
+          });
+        }
+        console.log(res.statusText);
+      })
+      .catch(err => {
+        if (err.response.status === 422) {
+          this.setState({
+            title: err.response.data.title,
+            desc: err.response.data.msg,
+            borrowType: "fail"
+          });
+        }
+      });
+  }
   render() {
     return (
       <React.Fragment>
@@ -91,7 +84,7 @@ class Lap extends Component {
               <span className="c-lap__content--left__back">뒷문</span>
             </div>
             <div className="c-lap__content--right">
-              {dummyData.map((list, ix) => {
+              {this.state.roomSeatDesc.map((list, ix) => {
                 return (
                   <div
                     style={{
@@ -99,6 +92,7 @@ class Lap extends Component {
                       height: "60px",
                       marginBottom: "20px"
                     }}
+                    key={ix}
                   >
                     {list.map((item, idx) => {
                       if (idx <= 1) {
@@ -114,6 +108,7 @@ class Lap extends Component {
                                 seatNum: ix * 6 + idx + 1
                               })
                             }
+                            key={idx}
                           >
                             {item.seated === 2 ? (
                               <NoteBook />
@@ -124,7 +119,7 @@ class Lap extends Component {
                         );
                       } else if (idx === 2) {
                         return (
-                          <React.Fragment>
+                          <React.Fragment key={idx}>
                             <div style={{ marginRight: "85px" }} />
                             <div
                               className={
@@ -159,6 +154,7 @@ class Lap extends Component {
                                 seatNum: ix * 6 + idx + 1
                               })
                             }
+                            key={idx}
                           >
                             {item.seated === 2 ? (
                               <NoteBook />
@@ -181,31 +177,80 @@ class Lap extends Component {
             <div className="c-dialog" />
             <div className="c-dialog-wrapper">
               <div className="c-dialog-wrapper__box">
-                <h3>노트북 대여 신청</h3>
+                <h3>
+                  {this.state.title.length === 0
+                    ? "노트북 대여 신청"
+                    : this.state.title}
+                </h3>
                 <p>
-                  <span>
-                    {this.props.roomName === "lab1"
-                      ? "Lab 1"
-                      : this.props.roomName === "lab2"
-                      ? "Lab 2"
-                      : this.props.roomName === "lab3"
-                      ? "Lab 3"
-                      : "Lab 4"}
-                    실, {this.state.seatNum}번
-                  </span>{" "}
-                  좌석에 노트북 대여를 신청할까요?
+                  {this.state.borrowType.length === 0 ? (
+                    <Fragment>
+                      <span>
+                        {this.props.roomName === "lab1"
+                          ? "Lab 1"
+                          : this.props.roomName === "lab2"
+                          ? "Lab 2"
+                          : this.props.roomName === "lab3"
+                          ? "Lab 3"
+                          : "Lab 4"}
+                        실, {this.state.seatNum}번
+                      </span>{" "}
+                      좌석에 노트북 대여를 신청할까요?
+                    </Fragment>
+                  ) : this.state.borrowType === "fail" ? (
+                    <Fragment>
+                      <Fail />
+                      <span style={{ marginLeft: "20px" }}>
+                        {this.state.desc}
+                      </span>
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      <Success />
+                      <span style={{ marginLeft: "20px" }}>
+                        {this.state.desc}
+                      </span>
+                    </Fragment>
+                  )}
                 </p>
                 <div className="c-dialog-wrapper__box--buttons">
-                  <button>신청</button>
-                  <button
-                    onClick={() =>
-                      this.setState({
-                        isClicked: false
-                      })
-                    }
-                  >
-                    취소
-                  </button>
+                  {this.state.borrowType === "success" ? (
+                    <button
+                    onClick={() => {
+                      this.setState({ isClicked: false, borrowType: "" });
+                      window.location.reload();
+                    }}
+                    >
+                      확인
+                    </button>
+                  ) : this.state.borrowType === "fail" ? (
+                    <button
+                    onClick={() => {
+                      this.setState({ isClicked: false, borrowType: "" });
+                    }}
+                    >
+                      확인
+                    </button>
+                  ) : (
+                    <Fragment>
+                      <button
+                        onClick={() =>
+                          this.onSubmitBorrowLaptop(this.state.seatNum)
+                        }
+                      >
+                        신청
+                      </button>
+                      <button
+                        onClick={() =>
+                          this.setState({
+                            isClicked: false
+                          })
+                        }
+                      >
+                        취소
+                      </button>
+                    </Fragment>
+                  )}
                 </div>
               </div>
             </div>
