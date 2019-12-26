@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ReactComponent as Home } from "assets/image/home.svg";
 import { ReactComponent as Notice } from "assets/image/notice.svg";
+import { ReactComponent as Logout } from "assets/image/logout.svg";
 import { ReactComponent as Notebook } from "assets/image/notebook.svg";
 import { ReactComponent as Song } from "assets/image/song.svg";
 import { ReactComponent as Graph } from "assets/image/graph.svg";
@@ -34,6 +35,12 @@ class NavigationBar extends Component {
       <div className="c-navigation-bar">
         <div className="c-navigation-bar__top">
           <span>로고</span>
+          {localStorage.getItem("authority") === "teacher" ? (
+          <div className="c-profile-bar__header--logout" style={{display: "flex", alignItems: "center", marginLeft: "auto", marginRight: "26px"}}>
+          <Logout />
+          <span style={{fontSize: "18px", color: "#8b8b8b", fontWeight: "normal", marginLeft: "13px"}}>로그아웃</span>
+        </div>
+        ) : null}
         </div>
         <div className="c-navigation-bar__mid">
           <p
