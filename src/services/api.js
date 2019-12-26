@@ -25,6 +25,18 @@ class Api {
         : await axios.post(`${apiUrl}${url}`, data, _options);
 
       return axiosResult;
+    } else if (method === "put") {
+      const axiosResult = !data
+        ? await axios.put(`${apiUrl}${url}`, _options)
+        : await axios.put(`${apiUrl}${url}`, data, _options);
+
+      return axiosResult;
+    } else if (method === "delete") {
+      const axiosResult = !data
+        ? await axios.delete(`${apiUrl}${url}`, _options)
+        : await axios.delete(`${apiUrl}${url}`, data, _options);
+
+      return axiosResult;
     }
   }
 }
