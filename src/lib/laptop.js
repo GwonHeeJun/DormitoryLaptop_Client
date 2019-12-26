@@ -26,6 +26,14 @@ export const laptopMove = ({  room, seat }) =>
     seat
   });
 
+export const blockConfirm = ({ user_id }) => 
+  Api.ajax("put" , url.gsm, `laptop/block/${user_id}`, {},
+   {
+     headers: {
+      token : localStorage.getItem('gsm-token')
+     }
+   });
+
 export const laptopCancel = () =>
   Api.ajax("delete", url.gsm, 'laptop', {
     headers: {
@@ -63,8 +71,15 @@ export const laptopBlock = ({ user_id, duration }) =>
     }
   });
 
-export const laptopBlockCancel = ({ userId }) => 
-  Api.ajax("get" , url.gsm, `laptop/block/${userId}`, {
+export const blockCancel = ({ user_id }) => 
+  Api.ajax("delete" , url.gsm, `laptop/block/${user_id}`, {
+    headers: {
+      token : localStorage.getItem('gsm-token')
+    }
+  });
+
+export const roomDetailUpgrade = ({ type }) => 
+  Api.ajax("get" , url.gsm, `laptop/rooms?type=${type}`, {
     headers: {
       token : localStorage.getItem('gsm-token')
     }
