@@ -1,0 +1,222 @@
+.c-admin-laptop-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    &__type {
+        display: flex;
+        width: 97%;
+        margin-left: 30px;
+        height: 5%;
+        justify-content: center;
+        margin: 0 35px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #a0a0a0;
+        
+        .name {
+            display: flex;
+            justify-content: center;
+            flex: 3;
+        }
+
+        .grade {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .class {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .number {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .room {
+            display: flex;
+            justify-content: center;
+            flex: 2;
+        }
+
+        .seat {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .status {
+            display: flex;
+            justify-content: center;
+            flex: 2;
+        }
+
+        .time {
+            display: flex;
+            justify-content: center;
+            flex: 2;
+        }
+
+        .block {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 95%;
+
+        .c-admin-laptop-list__content--wrapper {
+            width: 97%;
+            height: 100%;
+            border: solid 2px #ededed;
+            border-radius: 10px;
+            overflow-y: scroll;
+
+            &__user {
+                width: 100%;
+                display: flex;
+                padding-top: 13px;
+                padding-bottom: 13px;
+                align-items: center;
+                font-size: 20px;
+                border-bottom: solid 2px #ededed;
+                .name {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 3;
+                    margin-left: 20px;
+
+                    svg {
+                        height: 53px;
+                        width: 53px;
+                        margin-right: 10px;
+                    }
+                }
+        
+                .grade {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
+                }
+        
+                .class {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
+                }
+        
+                .number {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
+                }
+        
+                .room {
+                    display: flex;
+                    justify-content: center;
+                    flex: 2;
+                }
+        
+                .seat {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
+                }
+        
+                .status {
+                    display: flex;
+                    justify-content: center;
+                    flex: 2;
+
+                    &__use {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100px;
+                        height: 30px;
+                        border-radius: 10px;
+                        background-color: #d9f6de;
+
+                        span {
+                            font-size: 16px;
+                            color: #28c842;
+                        }
+                    }
+
+                    &__caught {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100px;
+                        height: 30px;
+                        border-radius: 10px;
+                        background-color: #fcecec;
+
+                        span {
+                            font-size: 16px;
+                            color: #e11a1a;
+                        }
+                    }
+                }
+        
+                .time {
+                    display: flex;
+                    justify-content: center;
+                    flex: 2;
+                }
+        
+                .block {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
+                    
+                    svg {
+                        width: 33px;
+                    }
+
+                    .sponse {
+                        padding: 12px;
+                        font-size: 18px;
+                        font-weight: bold;
+                        color: #8b8b8b;
+                        border-radius: 10px;
+                        background-color: #ededed;
+                    }
+
+                    .quest {
+
+                        .ok {
+                            cursor: pointer;
+                            padding: 6px;
+                            border-radius: 10px;
+                            background-color: #28c842;
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #ffffff;
+                        }
+
+                        .nope {
+                            cursor: pointer;
+                            margin-left: 5px;
+                            font-size: 16px;
+                            color: #a0a0a0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
