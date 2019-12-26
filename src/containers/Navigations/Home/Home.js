@@ -12,7 +12,7 @@ export default class Home extends Component {
           홈 <small>2019년 12월 16일 월요일</small>
         </h2>
         <div className="home-service">
-          <ServiceBanner />
+          <ServiceBanner banner="beta"/>
         </div>
         <div className="home-notice">
           <div className="consultant">
