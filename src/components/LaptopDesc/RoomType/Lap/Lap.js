@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { roomSeat, laptopBorrow } from "lib/laptop";
 import { ReactComponent as Success } from "assets/image/success.svg";
 import { ReactComponent as Fail } from "assets/image/block.svg";
-var roomSeatDesc = [];
 
 class Lap extends Component {
   constructor(props) {
@@ -28,7 +27,6 @@ class Lap extends Component {
     roomSeat({ roomName }).then(res =>
       this.setState({ roomSeatDesc: res.data.seats })
     );
-    console.log(roomSeatDesc);
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -59,7 +57,6 @@ class Lap extends Component {
             borrowType: "fail"
           });
         }
-        console.log(res.statusText);
       })
       .catch(err => {
         if (err.response.status === 422) {
