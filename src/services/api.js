@@ -11,8 +11,6 @@ class Api {
     ? { ...this.defaultHeaderOptions, ...options }
     : this.defaultHeaderOptions;
 
-    console.log(typeof method);
-    
     if (method === "get") {
       const axiosResult = !data
         ? await axios.get(`${apiUrl}${url}`, _options)

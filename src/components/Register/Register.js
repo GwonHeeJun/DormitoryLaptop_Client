@@ -21,7 +21,6 @@ export default class Register extends Component {
 
   onChange = e => {
     const { name, value } = e.target;
-    console.log(value)
     this.setState({
       [name]: value
     });
@@ -50,10 +49,8 @@ export default class Register extends Component {
 
     localRegister({ type: title, email, password, verification_code })
       .then(result => {
-        console.log("pass")
       })
       .catch(result => {
-        console.log(result);
       });
   };
 
