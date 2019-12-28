@@ -59,8 +59,18 @@ export default class AdminLaptopList extends Component {
     }
   }
 
+  componentDidMount() {
+    const { type } = this.props;
+    if (type === "all") {
+      roomDetail().then(res => this.setState({ roomDetail: res.data.seats }));
+    } else {
+      roomDetailUpgrade({ type }).then(res => {
+        this.setState({ roomDetail: res.data.seats });
+      });
+    }
+  }
+
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
         <div className="c-admin-laptop-list">
