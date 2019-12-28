@@ -1,9 +1,11 @@
 export const CHANGE_LAPTOP_ROOM = "CHANGE_LAPTOP_ROOM";
 export const CHANGE_ADMIN_LAPTOP_SELECT = "CHANGE_ADMIN_LAPTOP_SELECT";
+export const CHANGE_SAW_LAPTOP_LIST = "CHANGE_SAW_LAPTOP_LIST";
 
 const initialState = {
   roomName: "lab1",
-  adminSelect: "all"
+  adminSelect: "all",
+  seeList: false
 };
 
 /**
@@ -18,6 +20,10 @@ const initialState = {
  *             : all     - 전체
  *             : useful  - 이용가능
  *             : caught  - 적발
+ *
+ * seeList : 관리자 유저의 대여대장 보는지 안보는지 알기위한 State
+ *         : true     - 보기
+ *         : false    - 보지않기
  */
 
 export default function reducer(state = initialState, action = {}) {
@@ -31,6 +37,11 @@ export default function reducer(state = initialState, action = {}) {
         return {
           ...state,
           adminSelect: action.payload.adminSelect
+        }
+      case CHANGE_SAW_LAPTOP_LIST:
+        return {
+          ...state,
+          seeList: action.payload.seeList
         }
       default:
         return state
@@ -48,5 +59,12 @@ export const changeAdminLaptopSelect = adminSelect => ({
   type: CHANGE_ADMIN_LAPTOP_SELECT,
   payload : {
       adminSelect
+  }
+});
+
+export const changeAdminSawLaptop = seeList => ({
+  type: CHANGE_SAW_LAPTOP_LIST,
+  payload : {
+    seeList
   }
 });
