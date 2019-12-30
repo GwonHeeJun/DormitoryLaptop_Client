@@ -27,3 +27,6 @@ export const CheckUser = ({ token }) =>
       token : localStorage.getItem('gsm-token')
     }
   });
+
+export const CheckEmailVertication = ({ keyValue }) =>
+  Api.ajax("get", url.gsm, `auth/verification?key=${keyValue}`);
