@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { ReactComponent as ManProfile } from "assets/image/manProfile.svg";
 import { ReactComponent as UnBlock } from "assets/image/unBlock.svg";
+import { ReactComponent as Block } from "assets/image/block.svg";
 import "./AdminLaptopList.scss";
 import { ReactComponent as Success } from "assets/image/success.svg";
 import {
   blockConfirm,
   blockCancel,
   roomDetailUpgrade,
-  roomDetail
+  roomDetail,
+  laptopBlock
 } from "lib/laptop";
 
 export default class AdminLaptopList extends Component {
@@ -16,6 +18,12 @@ export default class AdminLaptopList extends Component {
 
     this.state = {
       isClicked: false,
+      isManager: false,
+      isConfirm: false,
+      userId: [],
+      roomName: "",
+      seatName: "",
+      studentName: "",
       title: "",
       desc: "",
       roomDetail: []
@@ -163,9 +171,26 @@ export default class AdminLaptopList extends Component {
                           </div>
                         </span>
                         <span className="time">{item.rental_time}</span>
-                        <span className="block">
+                        {item.is_blocked ?  <span
+                          className="block"
+                        >
+                          <Block />
+                        </span> : <span
+                          className="block"
+                          onClick={() =>
+                            {this.setState({
+                              isClicked: true,
+                              isManager: true,
+                              roomName: item.room,
+                              seatName: item.seat,
+                              studentName: item.name,
+                            });
+                            this.state.userId.push(item.user_id);
+                          }
+                          }
+                        >
                           <UnBlock />
-                        </span>
+                        </span> }
                       </div>
                     );
                   })}
@@ -178,21 +203,60 @@ export default class AdminLaptopList extends Component {
             <div className="c-dialog-wrapper">
               <div className="c-dialog-wrapper__box">
                 <h3>노트북 부정 사용 적발 승인</h3>
-                <p>
-                  <Success />
-                  <span style={{ marginLeft: "20px" }}>{this.state.desc}</span>
-                </p>
+                {this.state.isManager ? (
+                  <p>
+                    {this.state.roomName}, {this.state.seatName}번 좌석에서
+                    이용중인 {this.state.studentName}학생의 부정 사용을 적발
+                    했나요?
+                  </p>
+                ) : (
+                  <p>
+                    <Success />
+                    <span style={{ marginLeft: "20px" }}>
+                      {this.state.desc}
+                    </span>
+                  </p>
+                )}
                 <div className="c-dialog-wrapper__box--buttons">
-                  <button
-                    onClick={() => {
-                      this.setState({
-                        isClicked: false
-                      });
-                      window.location.reload();
-                    }}
-                  >
-                    확인
-                  </button>
+                  {this.state.isManager ? (
+                    <Fragment>
+                      <button
+                        onClick={() =>
+                          {
+                            this.setState({
+                              isManager: false,
+                              desc:
+                                "사감선생님 검토 후 해당 학생의 노트북 대여가 한달 간 금지됩니다."
+                            });
+                            laptopBlock({
+                              user_id: this.state.userId,
+                              duration: 30
+                            }).then(res => console.log(res)).catch(err => console.log(err));
+                          }
+                        }
+                      >
+                        확인
+                      </button>
+                      <button
+                        onClick={() =>
+                          this.setState({ isClicked: false, isManager: false })
+                        }
+                      >
+                        취소
+                      </button>
+                    </Fragment>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        this.setState({
+                          isClicked: false
+                        });
+                        window.location.reload();
+                      }}
+                    >
+                      확인
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
