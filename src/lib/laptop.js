@@ -63,9 +63,11 @@ export const roomDetail = () =>
   });
 
 export const laptopBlock = ({ user_id, duration }) => 
-  Api.ajax("get" , url.gsm, `laptop/block`, {
+  Api.ajax("post" , url.gsm, `laptop/block`, {
     user_id,
     duration,
+    
+  }, {
     headers: {
       token : localStorage.getItem('gsm-token')
     }
