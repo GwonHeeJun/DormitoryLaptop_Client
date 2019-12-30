@@ -12,12 +12,15 @@ import { ReactComponent as Bug } from "assets/image/bug.svg";
 import { connect } from "react-redux";
 import { changeNavigationType } from "store/Menu/Menu.store";
 import "./NavigationBar.scss";
+import { Redirect } from "react-router-dom";
 
 class NavigationBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      isLogout: false
+    };
 
     this.onClickChangeNavigationType = this.onClickChangeNavigationType.bind();
   }
@@ -29,14 +32,25 @@ class NavigationBar extends Component {
     changeNavigationType(navigationType);
   };
 
+  onClickLogoutFunc() {
+    localStorage.removeItem('gsm-token');
+    localStorage.removeItem('authority');
+    this.setState({ isLogout : true })
+  }
+
   render() {
     const { navigationType } = this.props;
+
+    if (this.state.isLogout) {
+      return <Redirect to="/" />
+    }
+    
     return (
       <div className="c-navigation-bar">
         <div className="c-navigation-bar__top">
           <span>로고</span>
           {localStorage.getItem("authority") === "teacher" ? (
-          <div className="c-profile-bar__header--logout" style={{display: "flex", alignItems: "center", marginLeft: "auto", marginRight: "26px"}}>
+          <div className="c-profile-bar__header--logout" style={{display: "flex", alignItems: "center", marginLeft: "auto", marginRight: "26px"}} onClick={() => this.onClickLogoutFunc()}>
           <Logout />
           <span style={{fontSize: "18px", color: "#8b8b8b", fontWeight: "normal", marginLeft: "13px"}}>로그아웃</span>
         </div>
