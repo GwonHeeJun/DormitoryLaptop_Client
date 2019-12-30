@@ -51,7 +51,8 @@ class App extends React.Component {
 const RoutesComponent = () => (
   <Fragment>
     <Route exact path="/" component={MainContainer} />
-    <Route exact path="/home" component={HomeContainer} />
+    <Route exact path="/:key" component={MainContainer} />
+    <Route exact path="/home/main" component={HomeContainer} />
   </Fragment>
 );
 
