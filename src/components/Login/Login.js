@@ -98,7 +98,7 @@ class Login extends Component {
 
   render() {
     if (this.state.isRedirect) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/home/main" />;
     }
     return (
       <div className="c-login">
