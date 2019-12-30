@@ -5,6 +5,7 @@ import { ReactComponent as Limit } from "assets/image/limit.svg";
 import { ReactComponent as ManProfile } from "assets/image/manProfile.svg";
 import "./ProfileBar.scss";
 import { UserInfo } from "lib/auth";
+import { Redirect } from "react-router-dom";
 
 export default class ProfileBar extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ export default class ProfileBar extends Component {
       name: "",
       grade: "",
       class: "",
-      point: 0
+      point: 0,
+      isLogout: false
     };
   }
 
@@ -29,6 +31,12 @@ export default class ProfileBar extends Component {
         })
       )
       .catch(err => console.log(err));
+  }
+  
+  onClickLogoutFunc() {
+    localStorage.removeItem('gsm-token');
+    localStorage.removeItem('authority');
+    this.setState({ isLogout : true })
   }
 
   render() {
@@ -61,6 +69,10 @@ export default class ProfileBar extends Component {
       default:
         break;
     }
+
+    if (this.state.isLogout) {
+      return <Redirect to="/" />
+    }
     return (
       <div className="c-profile-bar">
         <div className="c-profile-bar__header">
@@ -68,7 +80,7 @@ export default class ProfileBar extends Component {
             <Ring />
             <span className="new" />
           </div>
-          <div className="c-profile-bar__header--logout">
+          <div className="c-profile-bar__header--logout" onClick={() => this.onClickLogoutFunc()}>
             <Logout />
             <span>로그아웃</span>
           </div>
@@ -86,6 +98,7 @@ export default class ProfileBar extends Component {
               <span className="bar__location" style={{ width: `${7.1 * this.state.point}` }} />
             </div>
             <span className="grade">{this.state.point}</span>
+            
           </div>
         </div>
         <div className="c-profile-bar__footer">
