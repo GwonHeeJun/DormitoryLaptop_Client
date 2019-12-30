@@ -81,7 +81,7 @@ class MainContainer extends Component {
 
   render() {
     if (this.state.isRedirect) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/home/main" />;
     }
     console.log(this.props.match);
     return (
