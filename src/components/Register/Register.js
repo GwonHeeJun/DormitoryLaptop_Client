@@ -3,6 +3,8 @@ import { ReactComponent as NoteBook } from "assets/image/notebookPer.svg";
 import { ReactComponent as ConsultantImage } from "assets/image/management.svg";
 import { ReactComponent as ResidentImage } from "assets/image/resident.svg";
 import { localRegister } from "lib/auth";
+import { ReactComponent as Success } from "assets/image/success.svg";
+import { ReactComponent as Fail } from "assets/image/block.svg";
 import "./Register.scss";
 
 export default class Register extends Component {
@@ -15,7 +17,9 @@ export default class Register extends Component {
       password: "",
       rePassword: "",
       verification_code: "",
-      checkBox: true
+      checkBox: true,
+      desc: "",
+      isFailled: false
     };
   }
 
@@ -49,8 +53,17 @@ export default class Register extends Component {
 
     localRegister({ type: title, email, password, verification_code })
       .then(result => {
+        this.setState({
+          desc: result.data.msg,
+          isClicked: true,
+        })
       })
       .catch(result => {
+        this.setState({
+          desc: result.response.data.msg,
+          isClicked: true,
+          isFailled: true
+        })
       });
   };
 
@@ -79,6 +92,7 @@ export default class Register extends Component {
 
   render() {
     return (
+      <React.Fragment>
       <div className="c-register">
         <div className="c-register__content">
           <h2 className="c-register__content--title">
@@ -140,6 +154,33 @@ export default class Register extends Component {
           )}
         </div>
       </div>
+      {this.state.isClicked ? (
+        <React.Fragment>
+          <div className="c-dialog" />
+          <div className="c-dialog-wrapper">
+            <div className="c-dialog-wrapper__box">
+              <h3>회원가입</h3>
+              <p>
+                {this.state.isFailled ? <Fail /> : <Success /> }
+                <span style={{ marginLeft: "20px" }}>{this.state.desc}</span>
+              </p>
+              <div className="c-dialog-wrapper__box--buttons">
+                <button
+                  onClick={() => {
+                    this.setState({
+                      isClicked: false
+                    });
+                    window.location.reload();
+                  }}
+                >
+                  확인
+                </button>
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
+      ) : null}
+      </React.Fragment>
     );
   }
 }
